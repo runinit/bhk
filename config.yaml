@@ -291,6 +291,43 @@ outlines:
       where: [corne_screw]
       radius: 4.3/2
 
+  # Modular sub-outlines for bhk
+  _matrix:
+    - what: rectangle
+      where: [[/matrix/, key]]
+      size: [kx, ky]
+    - what: rectangle
+      where: [[/matrix/, key_1_25u]]
+      size: [kx * 1.25, ky]
+    - what: rectangle
+      where: [[/matrix/, key_1_5u]]
+      size: [kx * 1.5, ky]
+
+  _thumbfan:
+    - what: rectangle
+      where: [[/thumbfan/, key]]
+      size: kx
+    - what: rectangle
+      where: [[/thumbfan/, key_1_25u]]
+      size: [kx * 1.25, ky]
+    - what: rectangle
+      where: [[/thumbfan/, key_1_5u]]
+      size: [kx * 1.5, ky]
+
+  _mcu_area:
+    - what: rectangle
+      where: [mcu]
+      size: [mcu_x, mcu_y]
+    - what: rectangle
+      where: [display]
+      size: [mcu_x, display_y]
+    # Bridge from matrix to MCU
+    - what: rectangle
+      where: [matrix_c7_r1]
+      size: [1.6, 3 * ky]
+      adjust:
+        shift: [kx/2 + 1.6/2, -ky]
+
   corne:
     # Standard 1u keys
     - what: rectangle
@@ -340,42 +377,14 @@ outlines:
           affect: [x, y]
   
   bhk:
-
-    - what: rectangle
-      where: [matrix_c7_r1]
-      size: [1.6, 3 * ky]
-      adjust:
-        shift: [kx/2 + 1.6/2, -ky]
-    - what: rectangle
-      where: [mcu]
-      size: [mcu_x, mcu_y]
-    - what: rectangle
-      where: [display]
-      size: [mcu_x, display_y]
-    - what: polygon
-      points:
- 
-        - ref: thumbfan_c2_r2
-          shift: [-kx/2, -ky/2]
-          affect: [x, y]
-        - ref: thumbfan_c2_r2
-          shift: [kx/2, -ky/2]
-          affect: [x, y]
-        - ref: thumbfan_c3_r2
-          shift: [-kx/2, -ky/2]
-          affect: [x, y]
-        - ref: thumbfan_c3_r2
-          shift: [kx/2, -ky/2]
-          affect: [x, y]
-        - ref: mcu
-          shift: [0, 0]
-          affect: [x,y]
-        - ref: matrix_c6_r2
-          shift: [-kx/2, 0]
-          affect: [x]
-        - ref: matrix_c2_r2
-          shift: [kx/2, ky/2]
-          affect: [x, y]
+    - what: outline
+      name: _matrix
+    - what: outline
+      name: _thumbfan
+      operation: add
+    - what: outline
+      name: _mcu_area
+      operation: stack
 
   preview:
     - what: outline
