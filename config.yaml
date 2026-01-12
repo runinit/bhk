@@ -10,8 +10,8 @@ points:
           key.width: 1.25 * u
           key.tags: [key, key_1_25u]
           rows:
-            r1.key.width: u
-            r1.key.tags: [key]
+            r1.width: u
+            r1.tags: [key]
         c2.key.spread: 1.125 * u
         c3.key.stagger: u/4
         c4.key.stagger: u/8
