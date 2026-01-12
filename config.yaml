@@ -1,5 +1,66 @@
+meta:
+  engine: 4.0.4
+  name: blackholekeyboard
+  version: 0.1
+  author: runinit
+  url: https://github.com/runinit/blackholekeyboard
+
+presets:
+  choc_v1:
+    kx: cx
+    ky: cy
+    ks: 18.5
+    kp: 17.5
+    kcow: 13.8
+    kcoh: 13.8
+    keycw: 17.5
+    keych: 16.5
+    diode_shift_x: 5.7
+    diode_rotation: 180
+    switch_rotation: 180
+  choc_v2:
+    kx: u
+    ky: u
+    ks: 19
+    kp: 19
+    kcow: 14
+    kcoh: 14
+    keycw: 18
+    keych: 18
+    diode_shift_x: 5.7
+    diode_rotation: 180
+    switch_rotation: 180
+  mx:
+    kx: u
+    ky: u
+    ks: 19
+    kp: 19
+    kcow: 14
+    kcoh: 14
+    keycw: 18
+    keych: 18
+    diode_shift_x: 7
+    diode_rotation: 0
+    switch_rotation: 0
+
+units:
+  $extends: presets.mx
+
+  # MCU dimensions (nice!nano / supermini)
+  mcu_x: 18
+  mcu_y: 33
+
+  # Display dimensions (nice!view)
+  display_x: 14
+  display_y: 36
+
+  # Physical measures
+  screw_radius: 1.1
+  spacer_radius: 2.05
+  fillet_radius: 1
+
 points:
-  key.tags: 
+  key.tags:
     - key
   zones:
     matrix:
@@ -7,144 +68,194 @@ points:
         shift: [150, -150] # Fix KiCad placement
       columns:
         c1:
-          key.width: 1.25 * u
-          key.tags: [key, key_1_25u]
+          key.width: 1.25 * kx
+          key.tags: [key_1_25u]
           rows:
-            r1.width: u
-            r1.tags: [key]
-        c2.key.spread: 1.125 * u
-        c3.key.stagger: u/4
-        c4.key.stagger: u/8
-        c5.key.stagger: -u/8
-        c6.key.stagger: -u/8
+            r5:
+              width: kx
+              tags: [key]
+              adjust:
+                shift: [0.125 * kx, 0]
+        c2.key.spread: 1.125 * kx
+        c3.key.stagger: ky/4
+        c4.key.stagger: ky/8
+        c5:
+          key.stagger: -ky/8
+          rows:
+            r5.skip: true
+        c6:
+          key.stagger: -ky/8
+          rows:
+            r5.skip: true
+
         c7:
+          key.stagger: -ky/2
+          rows:
+            r2:
+              width: 1.5 * kx
+              tags: [key_1_5u]
+              adjust:
+                rotate: 90
+                shift: [0, -0.25kx]
+            r5.skip: true
+            r4.skip: true
+            r3.skip: true
       rows:
         r5:
-        r4: 
+        r4:
         r3:
         r2:
         r1:
 
     thumbfan:
       anchor:
-        - ref: matrix_c5_r5
-          shift: [9.5,-22]
+        - ref: matrix_c5_r4
+          shift: [.5kx, -1.125ky]
       columns:
-        c4:
-        c5.key:
-          splay: -15
-          stagger: -2.7
-          spread: u + 2
-        c6.key:
-          splay: 75
-          stagger: 2
-          spread: u + 3.5
-          tags:
-            - key_1_5u
+        c1:
+          key:
+            width: 1.25kx
+            splay: -15
+            tags: [key_1_25u]
+          rows:
+            r1.skip: true
+
+        c2:
+          key:
+            splay: -15
+            stagger: -ky/4
+            spread: 1.2kx
+          rows:
+            r1:
+              width: 1.5 * kx
+              tags: [key_1_5u]
+              adjust:
+                rotate: 90
+                shift: [0, 0.25kx]
+        c3:
+          rows:
+            r1:
+              width: 1.5 * kx
+              tags: [key_1_5u]
+              adjust:
+                rotate: 90
+                shift: [0, 0.25kx]
       rows:
-        r0:
+        r2:
+        r1:
+
     mcu:
       key.tags:
         - helper
       anchor:
         - ref: matrix_c7_r1
-          shift: [u/2+18/2+1.6,u/2-33/2]
+          shift: [kx/2 + mcu_x/2 + 1.6, ky/2 - mcu_y/2]
+
     display:
       key.tags:
         - helper
       anchor:
         - ref: mcu
-          shift: [0,-3.5]
+          shift: [0, -3.5]
+
     corne_screw_1:
       key.tags:
         - helper
         - corne_screw
-      anchor: 
+      anchor:
         aggregate.parts:
           - ref: matrix_c1_r1
           - ref: matrix_c2_r1
           - ref: matrix_c1_r2
           - ref: matrix_c2_r2
+
     corne_screw_2:
       key.tags:
         - helper
         - corne_screw
-      anchor: 
+      anchor:
         aggregate.parts:
           - ref: matrix_c5_r1
           - ref: matrix_c5_r2
           - ref: matrix_c6_r1
           - ref: matrix_c6_r2
+
     corne_screw_3:
       key.tags:
         - helper
         - corne_screw
-      anchor: 
+      anchor:
         aggregate.parts:
           - ref: matrix_c1_r2
           - ref: matrix_c1_r3
           - ref: matrix_c2_r2
           - ref: matrix_c2_r3
+
     corne_screw_4:
       key.tags:
         - helper
         - corne_screw
-      anchor: 
+      anchor:
         aggregate.parts:
           - ref: matrix_c3_r3
-          - ref: thumbfan_c4_r0
-        shift: [0.4,-2.675]
+          - ref: thumbfan_c1_r2
+        shift: [0.4, -2.675]
+
     corne_screw_5:
       key.tags:
         - helper
         - corne_screw
       anchor:
-        ref: thumbfan_c6_r0
-        shift: [0,12]
+        ref: thumbfan_c3_r2
+        shift: [0, 12]
+
 outlines:
   _keycaps:
     - what: rectangle
       where: [key]
-      size: 18
+      size: keycw
       fillet: 3
     - what: rectangle
       where: [key_1_25u]
-      size: [18*1.25,18]
-      fillet: 3     
+      size: [keycw * 1.25, keych]
+      fillet: 3
     - what: rectangle
       where: [key_1_5u]
-      size: [18*1.5,18]
+      size: [keycw * 1.5, keych]
       fillet: 3
+
   _mcu:
     - what: rectangle
       where: [mcu]
-      size: [17.78,33]
+      size: [17.78, mcu_y]
       fillet: 1
     - what: rectangle
       where: [mcu]
-      size: [8.94,7.35]
+      size: [8.94, 7.35]
       fillet: 0.1
       operation: stack
       adjust:
-        shift: [0,33/2-7.35/2+0.7]
+        shift: [0, mcu_y/2 - 7.35/2 + 0.7]
+
   _display:
     - what: rectangle
       where: [display]
-      size: [14,36]
+      size: [display_x, display_y]
       fillet: 0.5
     - what: rectangle
       where: [display]
-      size: [12.82,2.66]
+      size: [12.82, 2.66]
       operation: stack
       fillet: 0.1
       adjust:
-        shift: [0,-16.7]
+        shift: [0, -16.7]
     - what: rectangle
       where: [display]
-      size: [10.8,24.6]
+      size: [10.8, 24.6]
       operation: stack
       adjust:
-        shift: [0,-0.75]
+        shift: [0, -0.75]
+
   _mcu_cluster:
     - what: outline
       name: _mcu
@@ -152,73 +263,120 @@ outlines:
     - what: outline
       name: _display
       operation: stack
+
   _keys:
     - what: rectangle
       where: /matrix/
-      size: u
+      size: [kx, ky]
     - what: polygon
       points:
-        - ref: matrix_c3_r1
-          shift: [u/2,-u/2]
-        - ref: thumbfan_c4_r0
-          shift: [-u/2,u/2]
+        - ref: matrix_c7_r2
+          shift: [kx/2, -ky/2]
+        - ref: thumbfan_c1_r2
+          shift: [-kx/2, ky/2]
           affect: [x]
-        - ref: thumbfan_c4_r0
-          shift: [-u/2,u/2]
+        - ref: thumbfan_c1_r2
+          shift: [-kx/2, ky/2]
           affect: [y]
-        - ref: thumbfan_c5_r0
-          shift: [u/2,u/2]
-          affect: [x,y]
-        - ref: matrix_c7_r5
-          shift: [u/2,-u]
-        - ref: matrix_c7_r5
-          shift: [u/2,-u/2]
+        - ref: thumbfan_c2_r2
+          shift: [kx/2, ky/2]
+          affect: [x, y]
+        - ref: matrix_c6_r4
+          shift: [kx/2, -ky - ky]
+        - ref: matrix_c6_r4
+          shift: [kx/2, -ky/2 - ky]
+
   _corne_screw_heads:
     - what: circle
       where: [corne_screw]
       radius: 4.3/2
+
   corne:
+    # Standard 1u keys
     - what: rectangle
       where: [key]
-      size: u
+      size: [kx, ky]
+    # 1.25u keys (column 1, rows r1-r4)
+    - what: rectangle
+      where: [key_1_25u]
+      size: [1.25 * kx, ky]
+    # 1.5u keys (thumb)
+    - what: rectangle
+      where: [key_1_5u]
+      size: [1.5 * kx, ky]
     - what: rectangle
       where: [matrix_c7_r1]
-      size: [1.6,3u]
+      size: [1.6, 3 * ky]
       adjust:
-        shift: [u/2+1.6/2,-u]
+        shift: [kx/2 + 1.6/2, -ky]
     - what: rectangle
       where: [mcu]
-      size: [18,33]
+      size: [mcu_x, mcu_y]
     - what: rectangle
       where: [display]
-      size: [18,36]
+      size: [mcu_x, display_y]
     - what: polygon
       points:
-        - ref: matrix_c2_r3
-          shift: [u/2,-u/2]
-        - ref: matrix_c3_r3
-          shift: [u/2,-u/2-u/4]
-        - ref: thumbfan_c4_r0
-          shift: [-u/2,-u/2]
-          affect: [x,y]
-        - ref: thumbfan_c5_r0
-          shift: [u/2,-u/2]
-          affect: [x,y]
-        - ref: thumbfan_c6_r0
-          shift: [-1.5u/2,-u/2]
-          affect: [x,y]
-        - ref: thumbfan_c6_r0
-          shift: [1.5u/2,-u/2]
-          affect: [x,y]
+        - ref: thumbfan_c1_r2
+          shift: [-kx/2, -ky/2]
+          affect: [x, y]
+        - ref: thumbfan_c2_r2
+          shift: [kx/2, -ky/2]
+          affect: [x, y]
+        - ref: thumbfan_c3_r2
+          shift: [-kx/2, -ky/2]
+          affect: [x, y]
+        - ref: thumbfan_c3_r2
+          shift: [kx/2, -ky/2]
+          affect: [x, y]
         - ref: mcu
-          shift: [0,33/2]
-          affect: [y]
+          shift: [0, 0]
+          affect: [x,y]
         - ref: matrix_c6_r2
-          shift: [-u/2,0]
+          shift: [-1kx, 0]
           affect: [x]
         - ref: matrix_c2_r2
-          shift: [u/2,u/2]
+          shift: [-kx, ky/2]
+          affect: [x, y]
+  
+  bhk:
+
+    - what: rectangle
+      where: [matrix_c7_r1]
+      size: [1.6, 3 * ky]
+      adjust:
+        shift: [kx/2 + 1.6/2, -ky]
+    - what: rectangle
+      where: [mcu]
+      size: [mcu_x, mcu_y]
+    - what: rectangle
+      where: [display]
+      size: [mcu_x, display_y]
+    - what: polygon
+      points:
+ 
+        - ref: thumbfan_c2_r2
+          shift: [-kx/2, -ky/2]
+          affect: [x, y]
+        - ref: thumbfan_c2_r2
+          shift: [kx/2, -ky/2]
+          affect: [x, y]
+        - ref: thumbfan_c3_r2
+          shift: [-kx/2, -ky/2]
+          affect: [x, y]
+        - ref: thumbfan_c3_r2
+          shift: [kx/2, -ky/2]
+          affect: [x, y]
+        - ref: mcu
+          shift: [0, 0]
           affect: [x,y]
+        - ref: matrix_c6_r2
+          shift: [-kx/2, 0]
+          affect: [x]
+        - ref: matrix_c2_r2
+          shift: [kx/2, ky/2]
+          affect: [x, y]
+
   preview:
     - what: outline
       name: corne
@@ -231,6 +389,7 @@ outlines:
     - what: outline
       name: _corne_screw_heads
       operation: stack
+
 pcbs:
   corne_pcb:
     template: kicad8
@@ -244,12 +403,13 @@ pcbs:
         params:
           hole_size: 4.6
           hole_drill: 2.2
+
       inner_switches:
         what: ceoloide/switch_choc_v1_v2
         where:
           - /matrix_c[2-6]_r[0-4]/
-          - /thumbfan_c[4-5]_r0/
-        params:  &switches
+          - /thumbfan_c[1-2]_r[1-2]/
+        params: &switches
           from: "{{colrow}}"
           to: "{{col.name}}"
           choc_v1_support: false
@@ -258,25 +418,28 @@ pcbs:
           reversible: true
           include_stabilizer_pad: false
         adjust:
-          rotate: 180
+          rotate: switch_rotation
+
       outer_switches_left:
         what: ceoloide/switch_choc_v1_v2
         where:
           - /matrix_c1_r[0-4]/
-        params: 
+        params:
           <<: *switches
           outer_pad_width_back: 2
         adjust:
-          rotate: 180
+          rotate: switch_rotation
+
       outer_switches_right:
         what: ceoloide/switch_choc_v1_v2
         where:
-          - thumbfan_c6_r0
-        params: 
+          - /thumbfan_c3_r[1-2]/
+        params:
           <<: *switches
           outer_pad_width_front: 2
         adjust:
-          rotate: 180
+          rotate: switch_rotation
+
       diodes:
         what: ceoloide/diode_tht_sod123
         where: /key/
@@ -285,8 +448,9 @@ pcbs:
           to: "{{row}}"
           reversible: true
         adjust:
-          shift: [5.7,0]
-          rotate: 180
+          shift: [diode_shift_x, 0]
+          rotate: diode_rotation
+
       mcu:
         what: ceoloide/mcu_supermini_nrf52840
         where: mcu
@@ -310,6 +474,7 @@ pcbs:
           P20_label: " "
           P21_label: " "
           use_rectangular_jumpers: false
+
       display:
         what: ceoloide/display_nice_view
         where: display
@@ -318,14 +483,16 @@ pcbs:
           invert_jumpers_position: true
           MOSI: "DA"
           SCK: "CL"
+
       battery_connector:
         what: ceoloide/battery_connector_jst_ph_2
         where: display
         params:
           reversible: true
         adjust:
-          shift: [-6,-25]
+          shift: [-6, -25]
           rotate: 90
+
       on_off_switch:
         what: ceoloide/power_switch_smd_side
         where: matrix_c6_r1
@@ -334,13 +501,14 @@ pcbs:
           to: RAW
           reversible: true
         adjust:
-          shift: [-1.5,u/2 - 1.75]
+          shift: [-1.5, ky/2 - 1.75]
           rotate: 90
+
       reset_switch:
         what: ceoloide/reset_switch_tht_top
         where: display
         params:
           reversible: true
         adjust:
-          shift: [6.75,-25]
+          shift: [6.75, -25]
           rotate: 90
