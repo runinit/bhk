@@ -18,6 +18,7 @@ presets:
     diode_shift_x: 5.7
     diode_rotation: 180
     switch_rotation: 180
+    led_shift_y: -5
     choc_v1_support: true
   choc_v2:
     kx: u
@@ -31,6 +32,7 @@ presets:
     diode_shift_x: 5.7
     diode_rotation: 180
     switch_rotation: 180
+    led_shift_y: -5
     choc_v1_support: false
   mx:
     kx: u
@@ -43,7 +45,8 @@ presets:
     keych: 18
     diode_shift_x: 7
     diode_rotation: 0
-    switch_rotation: 0
+    switch_rotation: 180
+    led_shift_y: 5
     choc_v1_support: false
 
 units:
@@ -98,7 +101,6 @@ points:
               width: 1.5 * kx
               tags: [key_1_5u]
               adjust:
-                rotate: 90
                 shift: [0, -0.25kx]
             r5.skip: true
             r4.skip: true
@@ -133,7 +135,6 @@ points:
               width: 1.5 * kx
               tags: [key_1_5u]
               adjust:
-                rotate: 90
                 shift: [0, 0.25kx]
         c3:
           rows:
@@ -141,7 +142,6 @@ points:
               width: 1.5 * kx
               tags: [key_1_5u]
               adjust:
-                rotate: 90
                 shift: [0, 0.25kx]
       rows:
         r2:
@@ -224,7 +224,7 @@ outlines:
       fillet: 3
     - what: rectangle
       where: [key_1_5u]
-      size: [keycw * 1.5, keych]
+      size: [keycw, keych * 1.5]
       fillet: 3
 
   _mcu:
@@ -269,25 +269,23 @@ outlines:
 
   _keys:
     - what: rectangle
-      where: /matrix/
+      where: [[/matrix/, key]]
       size: [kx, ky]
-    - what: polygon
-      points:
-        - ref: matrix_c7_r2
-          shift: [kx/2, -ky/2]
-        - ref: thumbfan_c1_r2
-          shift: [-kx/2, ky/2]
-          affect: [x]
-        - ref: thumbfan_c1_r2
-          shift: [-kx/2, ky/2]
-          affect: [y]
-        - ref: thumbfan_c2_r2
-          shift: [kx/2, ky/2]
-          affect: [x, y]
-        - ref: matrix_c6_r4
-          shift: [kx/2, -ky - ky]
-        - ref: matrix_c6_r4
-          shift: [kx/2, -ky/2 - ky]
+    - what: rectangle
+      where: [[/matrix/, key_1_25u]]
+      size: [kx * 1.25, ky]
+    - what: rectangle
+      where: [[/matrix/, key_1_5u]]
+      size: [kx, ky * 1.5]
+    - what: rectangle
+      where: [[/thumbfan/, key]]
+      size: kx
+    - what: rectangle
+      where: [[/thumbfan/, key_1_25u]]
+      size: [kx * 1.25, ky]
+    - what: rectangle
+      where: [[/thumbfan/, key_1_5u]]
+      size: [kx, ky * 1.5]
 
   _corne_screw_heads:
     - what: circle
@@ -304,7 +302,7 @@ outlines:
       size: [kx * 1.25, ky]
     - what: rectangle
       where: [[/matrix/, key_1_5u]]
-      size: [kx * 1.5, ky]
+      size: [kx, ky * 1.5]
 
   _thumbfan:
     - what: rectangle
@@ -315,7 +313,7 @@ outlines:
       size: [kx * 1.25, ky]
     - what: rectangle
       where: [[/thumbfan/, key_1_5u]]
-      size: [kx * 1.5, ky]
+      size: [kx, ky * 1.5]
 
   _mcu_area:
     - what: rectangle
@@ -325,26 +323,20 @@ outlines:
       where: [display]
       size: [mcu_x, display_y]
 
-  # Bridge polygon to fill gaps between matrix, thumbfan, and MCU
   _bridge:
-    # Fill the gap between matrix bottom and thumbfan top
-    - what: polygon
-      points:
-        - ref: thumbfan_c2_r2
-          shift: [-kx/2, -ky/2]
-        - ref: matrix_c4_r5
-          shift: [kx/2, -ky/2]
-        - ref: matrix_c4_r4
-          shift: [0, 0]
-        - ref: thumbfan_c2_r1
-          shift: [0, 0]
-
     # Bridge from thumbfan to MCU
     - what: rectangle
       where: [mcu]
       size: [3mcu_x, 3ky]
       adjust:
         shift: [-mcu_x, -display_y/1.5]
+        
+    # Bridge from thumfan to matrix
+    - what: rectangle
+      where: [thumbfan_c2_r2]
+      size: [4kx, 2ky]
+      adjust:
+        shift: [-kx, ky/2]
 
     # Bridge from matrix to MCU
     - what: rectangle
@@ -353,57 +345,13 @@ outlines:
       adjust:
         shift: [kx/2 + 1.6/2, -ky]
 
-
-
-
-  corne:
-    # Standard 1u keys
+    # Bridge from C3 to Thumbfan
     - what: rectangle
-      where: [key]
-      size: [kx, ky]
-    # 1.25u keys (column 1, rows r1-r4)
-    - what: rectangle
-      where: [key_1_25u]
-      size: [1.25 * kx, ky]
-    # 1.5u keys (thumb)
-    - what: rectangle
-      where: [key_1_5u]
-      size: [1.5 * kx, ky]
-    - what: rectangle
-      where: [matrix_c7_r1]
-      size: [1.6, 3 * ky]
+      where: [matrix_c2_r5]
+      size: [5kx,ky/2]
       adjust:
-        shift: [kx/2 + 1.6/2, -ky]
-    - what: rectangle
-      where: [mcu]
-      size: [mcu_x, mcu_y]
-    - what: rectangle
-      where: [display]
-      size: [mcu_x, display_y]
-    - what: polygon
-      points:
-        - ref: thumbfan_c1_r2
-          shift: [-kx/2, -ky/2]
-          affect: [x, y]
-        - ref: thumbfan_c2_r2
-          shift: [kx/2, -ky/2]
-          affect: [x, y]
-        - ref: thumbfan_c3_r2
-          shift: [-kx/2, -ky/2]
-          affect: [x, y]
-        - ref: thumbfan_c3_r2
-          shift: [kx/2, -ky/2]
-          affect: [x, y]
-        - ref: mcu
-          shift: [0, 0]
-          affect: [x,y]
-        - ref: matrix_c6_r2
-          shift: [-1kx, 0]
-          affect: [x]
-        - ref: matrix_c2_r2
-          shift: [-kx, ky/2]
-          affect: [x, y]
-  
+        shift: [2kx,0]
+
   bhk:
     - what: outline
       name: _matrix
@@ -416,6 +364,21 @@ outlines:
     - what: outline
       name: _mcu_area
       operation: add
+
+  bhk_auto:
+    - what: rectangle
+      where: [key, key_1_25u, key_1_5u]
+      size: [kx, ky]
+      bound: true      # Enable autobind
+      # autobind: 10   # Default value, increase if gaps remain
+    - what: rectangle
+      where: [mcu]
+      size: [mcu_x, mcu_y]
+      bound: true
+    - what: rectangle
+      where: [display]
+      size: [mcu_x, display_y]
+      bound: true
 
   preview:
     - what: outline
@@ -431,14 +394,14 @@ outlines:
       operation: stack
 
 pcbs:
-  corne_pcb:
+  bhk_pcb:
     template: kicad8
     outlines:
       board:
         outline: bhk
     footprints:
       m2_screws:
-        what: ceoloide/mounting_hole_npth
+        what: ceoloide/mounting_hole_plated
         where: /corne_screw/
         params:
           hole_size: 4.6
@@ -446,11 +409,10 @@ pcbs:
 
       # Switch footprint: use ceoloide/switch_choc_v1_v2 for choc presets, ceoloide/switch_mx for mx preset
       inner_switches:
-        what: ceoloide/switch_choc_v1_v2
+        what: ceoloide/switch_mx
         where:
-          - /matrix_c[2-6]_r[1-5]/
-          - /matrix_c7_r[1-2]/
-          - /thumbfan_c[1-2]_r[1-2]/
+          - /matrix/
+          - /thumbfan/
         params: &switches
           from: "{{colrow}}"
           to: "{{col.name}}"
@@ -459,26 +421,6 @@ pcbs:
           hotswap: true
           reversible: true
           include_stabilizer_pad: false
-        adjust:
-          rotate: switch_rotation
-
-      outer_switches_left:
-        what: ceoloide/switch_choc_v1_v2
-        where:
-          - /matrix_c1_r[1-5]/
-        params:
-          <<: *switches
-          outer_pad_width_back: 2
-        adjust:
-          rotate: switch_rotation
-
-      outer_switches_right:
-        what: ceoloide/switch_choc_v1_v2
-        where:
-          - /thumbfan_c3_r[1-2]/
-        params:
-          <<: *switches
-          outer_pad_width_front: 2
         adjust:
           rotate: switch_rotation
 
@@ -554,3 +496,15 @@ pcbs:
         adjust:
           shift: [6.75, -25]
           rotate: 90
+
+      leds:
+        what: ceoloide/led_sk6812mini-e
+        where: [key, key_1_25u, key_1_5u]
+        params:
+          reversible: true
+          P1: VCC
+          P2: "{{led_next}}"
+          P3: GND
+          P4: "{{led_prev}}"
+        adjust:
+          shift: [0, led_shift_y]
