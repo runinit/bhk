@@ -65,6 +65,13 @@ units:
   spacer_radius: 2.05
   fillet_radius: 1
 
+  # Gasket mount dimensions
+  gasket_width: 4        # Width of the gasket tab
+  gasket_length_lg: 55   # Large gasket length
+  gasket_length_md: 40   # Medium gasket length
+  gasket_length_sm: 30   # Small gasket length
+  gasket_length_1kx: 15  # 1 key gasket
+
 points:
   key.tags:
     - key
@@ -160,7 +167,7 @@ points:
       anchor:
         - ref: mcu
           shift: [0, -3.5]
-
+          
     corne_screw_1:
       key.tags:
         - helper
@@ -189,10 +196,10 @@ points:
         - corne_screw
       anchor:
         aggregate.parts:
-          - ref: matrix_c1_r2
-          - ref: matrix_c1_r3
-          - ref: matrix_c2_r2
-          - ref: matrix_c2_r3
+          - ref: matrix_c1_r4
+          - ref: matrix_c2_r4
+          - ref: matrix_c1_r5
+          - ref: matrix_c2_r5
 
     corne_screw_4:
       key.tags:
@@ -200,17 +207,127 @@ points:
         - corne_screw
       anchor:
         aggregate.parts:
-          - ref: matrix_c3_r3
-          - ref: thumbfan_c1_r2
-        shift: [0.4, -2.675]
+          - ref: matrix_c5_r3
+          - ref: matrix_c5_r4
+          - ref: matrix_c6_r3
+          - ref: matrix_c6_r4
 
     corne_screw_5:
       key.tags:
         - helper
         - corne_screw
       anchor:
-        ref: thumbfan_c3_r2
-        shift: [0, 12]
+        aggregate.parts:
+          - ref: thumbfan_c2_r2
+          - ref: thumbfan_c3_r2
+        shift: [0, 9.5]
+
+    # Gasket mount tabs around perimeter
+    # Size tags: gasket_lg (55mm), gasket_md (45mm), gasket_sm (35mm)
+    gasket_mount_left:
+      key.tags:
+        - helper
+        - gasket_mount
+        - gasket_vertical
+        - gasket_lg
+      anchor:
+        aggregate.parts:
+          - ref: matrix_c1_r1
+          - ref: matrix_c1_r4
+        shift: [-1.25kx/2 - 2, 0]
+
+    gasket_mount_top_left:
+      key.tags:
+        - helper
+        - gasket_mount
+        - gasket_horizontal
+        - gasket_sm
+      anchor:
+        aggregate.parts:
+          - ref: matrix_c1_r1
+          - ref: matrix_c2_r1
+        shift: [0, 0.5ky + 2]
+
+    gasket_mount_top_centre:
+      key.tags:
+        - helper
+        - gasket_mount
+        - gasket_horizontal
+        - gasket_1kx
+      anchor:
+        aggregate.parts:
+          - ref: matrix_c4_r1
+        shift: [0, 0.5ky + 2]
+
+    gasket_mount_top_right:
+      key.tags:
+        - helper
+        - gasket_mount
+        - gasket_horizontal
+        - gasket_1kx
+      anchor:
+        aggregate.parts:
+          - ref: matrix_c6_r1
+        shift: [0, 0.5ky + 2]
+
+    gasket_mount_right:
+      key.tags:
+        - helper
+        - gasket_mount
+        - gasket_vertical
+        - gasket_md
+      anchor:
+        aggregate.parts:
+          - ref: mcu
+        shift: [mcu_x/2 + 2, -mcu_y/2]
+        
+    gasket_mount_bottom_left:
+      key.tags:
+        - helper
+        - gasket_mount
+        - gasket_horizontal
+        - gasket_sm
+      anchor:
+        aggregate.parts:
+          - ref: matrix_c1_r5
+          - ref: matrix_c2_r5
+        shift: [0, -ky/2-2]  
+
+    gasket_mount_bottom_centre:
+      key.tags:
+        - helper
+        - gasket_mount
+        - gasket_horizontal
+        - gasket_sm
+      anchor:
+        aggregate.parts:
+          - ref: matrix_c3_r5
+          - ref: matrix_c5_r5
+        shift: [0, -ky/2-2]      
+
+    gasket_mount_thumbfan_bottom:
+      key.tags:
+        - helper
+        - gasket_mount
+        - gasket_horizontal
+        - gasket_sm
+      anchor:
+        aggregate.parts:
+          - ref: thumbfan_c2_r1
+          - ref: thumbfan_c3_r1
+        shift: [0, -1.75ky-2]
+
+    gasket_mount_thumbfan_right:
+      key.tags:
+        - helper
+        - gasket_mount
+        - gasket_vertical
+        - gasket_sm
+      anchor:
+        aggregate.parts:
+          - ref: thumbfan_c3_r1
+          - ref: thumbfan_c3_r2
+        shift: [kx/2+2, 0]
 
 outlines:
   _keycaps:
@@ -292,6 +409,43 @@ outlines:
       where: [corne_screw]
       radius: 4.3/2
 
+  _gasket_mounts:
+    # Vertical gaskets - large (55mm)
+    - what: rectangle
+      where: [[gasket_vertical, gasket_lg]]
+      size: [gasket_width, gasket_length_lg]
+      operation: stack
+    # Vertical gaskets - medium (45mm)
+    - what: rectangle
+      where: [[gasket_vertical, gasket_md]]
+      size: [gasket_width, gasket_length_md]
+      operation: stack
+    # Vertical gaskets - small (35mm)
+    - what: rectangle
+      where: [[gasket_vertical, gasket_sm]]
+      size: [gasket_width, gasket_length_sm]
+      operation: stack
+    # Horizontal gaskets - large (55mm)
+    - what: rectangle
+      where: [[gasket_horizontal, gasket_lg]]
+      size: [gasket_length_lg, gasket_width]
+      operation: stack
+    # Horizontal gaskets - medium (45mm)
+    - what: rectangle
+      where: [[gasket_horizontal, gasket_md]]
+      size: [gasket_length_md, gasket_width]
+      operation: stack
+    # Horizontal gaskets - small (35mm)
+    - what: rectangle
+      where: [[gasket_horizontal, gasket_sm]]
+      size: [gasket_length_sm, gasket_width]
+      operation: stack
+    # Horizontal gaskets - 1kx (15mm)
+    - what: rectangle
+      where: [[gasket_horizontal, gasket_1kx]]
+      size: [gasket_length_1kx, gasket_width]
+      operation: stack
+
   # Modular sub-outlines for bhk
   _matrix:
     - what: rectangle
@@ -364,13 +518,16 @@ outlines:
     - what: outline
       name: _mcu_area
       operation: add
+    - what: outline
+      name: _gasket_mounts
+      operation: add
 
   bhk_auto:
     - what: rectangle
       where: [key, key_1_25u, key_1_5u]
       size: [kx, ky]
-      bound: true      # Enable autobind
-      # autobind: 10   # Default value, increase if gaps remain
+      bound: true
+      #autobind: 10   # Default value, increase if gaps remain
     - what: rectangle
       where: [mcu]
       size: [mcu_x, mcu_y]
@@ -392,6 +549,9 @@ outlines:
     - what: outline
       name: _corne_screw_heads
       operation: stack
+    - what: outline
+      name: _gasket_mounts
+      operation: add
 
 pcbs:
   bhk_pcb:
@@ -404,8 +564,8 @@ pcbs:
         what: ceoloide/mounting_hole_plated
         where: /corne_screw/
         params:
-          hole_size: 4.6
-          hole_drill: 2.2
+          outline: 1.2
+          drill: 2.2
 
       # Switch footprint: use ceoloide/switch_choc_v1_v2 for choc presets, ceoloide/switch_mx for mx preset
       inner_switches:
@@ -416,11 +576,9 @@ pcbs:
         params: &switches
           from: "{{colrow}}"
           to: "{{col.name}}"
-          choc_v1_support: choc_v1_support
           include_plated_holes: false
           hotswap: true
           reversible: true
-          include_stabilizer_pad: false
         adjust:
           rotate: switch_rotation
 
