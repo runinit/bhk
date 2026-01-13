@@ -20,6 +20,7 @@ presets:
     switch_rotation: 180
     led_shift_y: -5
     choc_v1_support: true
+
   choc_v2:
     kx: u
     ky: u
@@ -34,6 +35,7 @@ presets:
     switch_rotation: 180
     led_shift_y: -5
     choc_v1_support: false
+
   mx:
     kx: u
     ky: u
@@ -69,8 +71,8 @@ units:
   gasket_width: 4        # Width of the gasket tab
   gasket_length_lg: 55   # Large gasket length
   gasket_length_md: 40   # Medium gasket length
-  gasket_length_sm: 30   # Small gasket length
-  gasket_length_1kx: 15  # 1 key gasket
+  gasket_length_sm: 25   # Small gasket length
+  gasket_length_1kx: 10  # 1 key gasket
 
 points:
   key.tags:
@@ -84,29 +86,123 @@ points:
           key.width: 1.25 * kx
           key.tags: [key_1_25u]
           rows:
+            r1:
+              led_prev: LED_30
+              led_next: LED_32
+            r2:
+              led_prev: LED_31
+              led_next: LED_33
+            r3:
+              led_prev: LED_32
+              led_next: LED_34
+            r4:
+              led_prev: LED_33
+              led_next: LED_35
             r5:
               width: kx
               tags: [key]
+              led_prev: LED_34
+              led_next: LED_END
               adjust:
                 shift: [0.125 * kx, 0]
-        c2.key.spread: 1.125 * kx
-        c3.key.stagger: ky/4
-        c4.key.stagger: ky/8
+        c2:
+          key.spread: 1.125 * kx
+          rows:
+            r1:
+              led_prev: LED_25
+              led_next: LED_27
+            r2:
+              led_prev: LED_26
+              led_next: LED_28
+            r3:
+              led_prev: LED_27
+              led_next: LED_29
+            r4:
+              led_prev: LED_28
+              led_next: LED_30
+            r5:
+              led_prev: LED_29
+              led_next: LED_31
+        c3:
+          key.stagger: ky/4
+          rows:
+            r1:
+              led_prev: LED_20
+              led_next: LED_22
+            r2:
+              led_prev: LED_21
+              led_next: LED_23
+            r3:
+              led_prev: LED_22
+              led_next: LED_24
+            r4:
+              led_prev: LED_23
+              led_next: LED_25
+            r5:
+              led_prev: LED_24
+              led_next: LED_26
+        c4:
+          key.stagger: ky/8
+          rows:
+            r1:
+              led_prev: LED_15
+              led_next: LED_17
+            r2:
+              led_prev: LED_16
+              led_next: LED_18
+            r3:
+              led_prev: LED_17
+              led_next: LED_19
+            r4:
+              led_prev: LED_18
+              led_next: LED_20
+            r5:
+              led_prev: LED_19
+              led_next: LED_21
         c5:
           key.stagger: -ky/8
           rows:
+            r1:
+              led_prev: LED_11
+              led_next: LED_13
+            r2:
+              led_prev: LED_12
+              led_next: LED_14
+            r3:
+              led_prev: LED_13
+              led_next: LED_15
+            r4:
+              led_prev: LED_14
+              led_next: LED_16
             r5.skip: true
         c6:
           key.stagger: -ky/8
           rows:
+            r1:
+              led_prev: LED_6
+              led_next: LED_8
+            r2:
+              led_prev: LED_7
+              led_next: LED_9
+            r3:
+              led_prev: LED_8
+              led_next: LED_10
+            r4:
+              led_prev: LED_9
+              led_next: LED_11
             r5.skip: true
 
         c7:
           key.stagger: -ky/2
           rows:
+            r1:
+              led_prev: LED
+              led_next: LED_2
             r2:
               width: 1.5 * kx
               tags: [key_1_5u]
+              led_prev: LED_1
+              led_next: LED_3
               adjust:
                 shift: [0, -0.25kx]
             r5.skip: true
@@ -130,6 +226,9 @@ points:
             splay: -15
             tags: [key_1_25u]
           rows:
+            r2:
+              led_prev: LED_10
+              led_next: LED_12
             r1.skip: true
 
         c2:
@@ -138,16 +237,26 @@ points:
             stagger: -ky/4
             spread: 1.2kx
           rows:
+            r2:
+              led_prev: LED_4
+              led_next: LED_6
             r1:
               width: 1.5 * kx
               tags: [key_1_5u]
+              led_prev: LED_5
+              led_next: LED_7
               adjust:
                 shift: [0, 0.25kx]
         c3:
           rows:
+            r2:
+              led_prev: LED_2
+              led_next: LED_4
             r1:
               width: 1.5 * kx
               tags: [key_1_5u]
+              led_prev: LED_3
+              led_next: LED_5
               adjust:
                 shift: [0, 0.25kx]
       rows:
@@ -169,53 +278,39 @@ points:
           shift: [0, -3.5]
           
     corne_screw_1:
-      key.tags:
-        - helper
-        - corne_screw
-      anchor:
-        aggregate.parts:
-          - ref: matrix_c1_r1
-          - ref: matrix_c2_r1
-          - ref: matrix_c1_r2
-          - ref: matrix_c2_r2
+      key.tags: [helper, corne_screw]
+      anchor.aggregate.parts:
+        - ref: matrix_c1_r1
+        - ref: matrix_c2_r1
+        - ref: matrix_c1_r2
+        - ref: matrix_c2_r2
 
     corne_screw_2:
-      key.tags:
-        - helper
-        - corne_screw
-      anchor:
-        aggregate.parts:
-          - ref: matrix_c5_r1
-          - ref: matrix_c5_r2
-          - ref: matrix_c6_r1
-          - ref: matrix_c6_r2
+      key.tags: [helper, corne_screw]
+      anchor.aggregate.parts:
+        - ref: matrix_c5_r1
+        - ref: matrix_c5_r2
+        - ref: matrix_c6_r1
+        - ref: matrix_c6_r2
 
     corne_screw_3:
-      key.tags:
-        - helper
-        - corne_screw
-      anchor:
-        aggregate.parts:
-          - ref: matrix_c1_r4
-          - ref: matrix_c2_r4
-          - ref: matrix_c1_r5
-          - ref: matrix_c2_r5
+      key.tags: [helper, corne_screw]
+      anchor.aggregate.parts:
+        - ref: matrix_c1_r4
+        - ref: matrix_c2_r4
+        - ref: matrix_c1_r5
+        - ref: matrix_c2_r5
 
     corne_screw_4:
-      key.tags:
-        - helper
-        - corne_screw
-      anchor:
-        aggregate.parts:
-          - ref: matrix_c5_r3
-          - ref: matrix_c5_r4
-          - ref: matrix_c6_r3
-          - ref: matrix_c6_r4
+      key.tags: [helper, corne_screw]
+      anchor.aggregate.parts:
+        - ref: matrix_c5_r3
+        - ref: matrix_c5_r4
+        - ref: matrix_c6_r3
+        - ref: matrix_c6_r4
 
     corne_screw_5:
-      key.tags:
-        - helper
-        - corne_screw
+      key.tags: [helper, corne_screw]
       anchor:
         aggregate.parts:
           - ref: thumbfan_c2_r2
@@ -223,110 +318,59 @@ points:
         shift: [0, 9.5]
 
     # Gasket mount tabs around perimeter
-    # Size tags: gasket_lg (55mm), gasket_md (45mm), gasket_sm (35mm)
+    # Size tags: gasket_lg (55mm), gasket_md (40mm), gasket_sm (30mm), gasket_1kx (15mm)
     gasket_mount_left:
-      key.tags:
-        - helper
-        - gasket_mount
-        - gasket_vertical
-        - gasket_lg
+      key.tags: [helper, gasket_mount, gasket_vertical, gasket_lg]
       anchor:
-        aggregate.parts:
-          - ref: matrix_c1_r1
-          - ref: matrix_c1_r4
+        aggregate.parts: [matrix_c1_r1, matrix_c1_r4]
         shift: [-1.25kx/2 - 2, 0]
 
     gasket_mount_top_left:
-      key.tags:
-        - helper
-        - gasket_mount
-        - gasket_horizontal
-        - gasket_sm
+      key.tags: [helper, gasket_mount, gasket_horizontal, gasket_sm]
       anchor:
-        aggregate.parts:
-          - ref: matrix_c1_r1
-          - ref: matrix_c2_r1
+        aggregate.parts: [matrix_c1_r1, matrix_c2_r1]
         shift: [0, 0.5ky + 2]
 
     gasket_mount_top_centre:
-      key.tags:
-        - helper
-        - gasket_mount
-        - gasket_horizontal
-        - gasket_1kx
+      key.tags: [helper, gasket_mount, gasket_horizontal, gasket_1kx]
       anchor:
-        aggregate.parts:
-          - ref: matrix_c4_r1
+        ref: matrix_c4_r1
         shift: [0, 0.5ky + 2]
 
     gasket_mount_top_right:
-      key.tags:
-        - helper
-        - gasket_mount
-        - gasket_horizontal
-        - gasket_1kx
+      key.tags: [helper, gasket_mount, gasket_horizontal, gasket_1kx]
       anchor:
-        aggregate.parts:
-          - ref: matrix_c6_r1
+        ref: matrix_c6_r1
         shift: [0, 0.5ky + 2]
 
     gasket_mount_right:
-      key.tags:
-        - helper
-        - gasket_mount
-        - gasket_vertical
-        - gasket_md
+      key.tags: [helper, gasket_mount, gasket_vertical, gasket_md]
       anchor:
-        aggregate.parts:
-          - ref: mcu
+        ref: mcu
         shift: [mcu_x/2 + 2, -mcu_y/2]
-        
+
     gasket_mount_bottom_left:
-      key.tags:
-        - helper
-        - gasket_mount
-        - gasket_horizontal
-        - gasket_sm
+      key.tags: [helper, gasket_mount, gasket_horizontal, gasket_sm]
       anchor:
-        aggregate.parts:
-          - ref: matrix_c1_r5
-          - ref: matrix_c2_r5
-        shift: [0, -ky/2-2]  
+        aggregate.parts: [matrix_c1_r5, matrix_c2_r5]
+        shift: [0, -ky/2-2]
 
     gasket_mount_bottom_centre:
-      key.tags:
-        - helper
-        - gasket_mount
-        - gasket_horizontal
-        - gasket_sm
+      key.tags: [helper, gasket_mount, gasket_horizontal, gasket_sm]
       anchor:
-        aggregate.parts:
-          - ref: matrix_c3_r5
-          - ref: matrix_c5_r5
-        shift: [0, -ky/2-2]      
+        aggregate.parts: [matrix_c3_r5, matrix_c5_r5]
+        shift: [0, -ky/2-2]
 
     gasket_mount_thumbfan_bottom:
-      key.tags:
-        - helper
-        - gasket_mount
-        - gasket_horizontal
-        - gasket_sm
+      key.tags: [helper, gasket_mount, gasket_horizontal, gasket_sm]
       anchor:
-        aggregate.parts:
-          - ref: thumbfan_c2_r1
-          - ref: thumbfan_c3_r1
+        aggregate.parts: [thumbfan_c2_r1, thumbfan_c3_r1]
         shift: [0, -1.75ky-2]
 
     gasket_mount_thumbfan_right:
-      key.tags:
-        - helper
-        - gasket_mount
-        - gasket_vertical
-        - gasket_sm
+      key.tags: [helper, gasket_mount, gasket_vertical, gasket_sm]
       anchor:
-        aggregate.parts:
-          - ref: thumbfan_c3_r1
-          - ref: thumbfan_c3_r2
+        aggregate.parts: [thumbfan_c3_r1, thumbfan_c3_r2]
         shift: [kx/2+2, 0]
 
 outlines:
@@ -383,26 +427,6 @@ outlines:
     - what: outline
       name: _display
       operation: stack
-
-  _keys:
-    - what: rectangle
-      where: [[/matrix/, key]]
-      size: [kx, ky]
-    - what: rectangle
-      where: [[/matrix/, key_1_25u]]
-      size: [kx * 1.25, ky]
-    - what: rectangle
-      where: [[/matrix/, key_1_5u]]
-      size: [kx, ky * 1.5]
-    - what: rectangle
-      where: [[/thumbfan/, key]]
-      size: kx
-    - what: rectangle
-      where: [[/thumbfan/, key_1_25u]]
-      size: [kx * 1.25, ky]
-    - what: rectangle
-      where: [[/thumbfan/, key_1_5u]]
-      size: [kx, ky * 1.5]
 
   _corne_screw_heads:
     - what: circle
@@ -570,9 +594,7 @@ pcbs:
       # Switch footprint: use ceoloide/switch_choc_v1_v2 for choc presets, ceoloide/switch_mx for mx preset
       inner_switches:
         what: ceoloide/switch_mx
-        where:
-          - /matrix/
-          - /thumbfan/
+        where: [[/matrix|thumbfan/, -helper]]
         params: &switches
           from: "{{colrow}}"
           to: "{{col.name}}"
@@ -637,14 +659,14 @@ pcbs:
 
       on_off_switch:
         what: ceoloide/power_switch_smd_side
-        where: matrix_c6_r1
+        where: mcu
         params:
           from: BAT_P
           to: RAW
           reversible: true
         adjust:
-          shift: [-1.5, ky/2 - 1.75]
-          rotate: 90
+          shift: [mcu_x, 0]
+          
 
       reset_switch:
         what: ceoloide/reset_switch_tht_top
