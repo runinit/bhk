@@ -1,0 +1,24 @@
+{
+  "name": "bhk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/runinit/bhk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/runinit/bhk/issues"
+  },
+  "homepage": "https://github.com/runinit/bhk#readme",
+  "dependencies": {
+    "ergogen": "^4.2.1"
+  }
+}
