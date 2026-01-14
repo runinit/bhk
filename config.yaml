@@ -74,9 +74,7 @@ units:
   gasket_length_sm: 25   # Small gasket length
   gasket_length_1kx: 10  # 1 key gasket
 
-points:
-  key.tags:
-    - key
+po 8
   zones:
     matrix:
       anchor:
@@ -87,122 +85,122 @@ points:
           key.tags: [key_1_25u]
           rows:
             r1:
-              led_prev: LED_30
-              led_next: LED_32
+              led_prev: LED_6
+              led_next: LED_7
             r2:
-              led_prev: LED_31
-              led_next: LED_33
+              led_prev: LED_7
+              led_next: LED_8
             r3:
-              led_prev: LED_32
-              led_next: LED_34
+              led_prev: LED_14
+              led_next: LED_15
             r4:
-              led_prev: LED_33
-              led_next: LED_35
+              led_prev: LED_20
+              led_next: LED_21
             r5:
               width: kx
               tags: [key]
-              led_prev: LED_34
-              led_next: LED_END
+              led_prev: LED_26
+              led_next: LED_27
               adjust:
                 shift: [0.125 * kx, 0]
         c2:
           key.spread: 1.125 * kx
           rows:
             r1:
-              led_prev: LED_25
-              led_next: LED_27
+              led_prev: LED_5
+              led_next: LED_6
             r2:
-              led_prev: LED_26
-              led_next: LED_28
+              led_prev: LED_8
+              led_next: LED_9
             r3:
-              led_prev: LED_27
-              led_next: LED_29
+              led_prev: LED_15
+              led_next: LED_16
             r4:
-              led_prev: LED_28
-              led_next: LED_30
+              led_prev: LED_21
+              led_next: LED_22
             r5:
-              led_prev: LED_29
-              led_next: LED_31
+              led_prev: LED_27
+              led_next: LED_28
         c3:
           key.stagger: ky/4
           rows:
             r1:
-              led_prev: LED_20
-              led_next: LED_22
+              led_prev: LED_4
+              led_next: LED_5
             r2:
-              led_prev: LED_21
-              led_next: LED_23
+              led_prev: LED_9
+              led_next: LED_10
             r3:
-              led_prev: LED_22
-              led_next: LED_24
+              led_prev: LED_16
+              led_next: LED_17
             r4:
-              led_prev: LED_23
-              led_next: LED_25
+              led_prev: LED_22
+              led_next: LED_23
             r5:
-              led_prev: LED_24
-              led_next: LED_26
+              led_prev: LED_28
+              led_next: LED_29
         c4:
           key.stagger: ky/8
           rows:
             r1:
-              led_prev: LED_15
-              led_next: LED_17
+              led_prev: LED_3
+              led_next: LED_4
             r2:
-              led_prev: LED_16
-              led_next: LED_18
+              led_prev: LED_10
+              led_next: LED_11
             r3:
               led_prev: LED_17
-              led_next: LED_19
+              led_next: LED_18
             r4:
-              led_prev: LED_18
-              led_next: LED_20
+              led_prev: LED_23
+              led_next: LED_24
             r5:
-              led_prev: LED_19
-              led_next: LED_21
+              led_prev: LED_29
+              led_next: LED_30
         c5:
           key.stagger: -ky/8
           rows:
             r1:
-              led_prev: LED_11
-              led_next: LED_13
+              led_prev: LED_2
+              led_next: LED_3
             r2:
-              led_prev: LED_12
-              led_next: LED_14
+              led_prev: LED_11
+              led_next: LED_12
             r3:
-              led_prev: LED_13
-              led_next: LED_15
+              led_prev: LED_18
+              led_next: LED_19
             r4:
-              led_prev: LED_14
-              led_next: LED_16
+              led_prev: LED_24
+              led_next: LED_25
             r5.skip: true
         c6:
           key.stagger: -ky/8
           rows:
             r1:
-              led_prev: LED_6
-              led_next: LED_8
+              led_prev: LED_1
+              led_next: LED_2
             r2:
-              led_prev: LED_7
-              led_next: LED_9
+              led_prev: LED_12
+              led_next: LED_13
             r3:
-              led_prev: LED_8
-              led_next: LED_10
+              led_prev: LED_19
+              led_next: LED_20
             r4:
-              led_prev: LED_9
-              led_next: LED_11
+              led_prev: LED_25
+              led_next: LED_26
             r5.skip: true
 
         c7:
           key.stagger: -ky/2
           rows:
             r1:
-              led_prev: LED
-              led_next: LED_2
+              led_prev: DA
+              led_next: LED_1
             r2:
               width: 1.5 * kx
               tags: [key_1_5u]
-              led_prev: LED_1
-              led_next: LED_3
+              led_prev: LED_13
+              led_next: LED_14
               adjust:
                 shift: [0, -0.25kx]
             r5.skip: true
@@ -227,8 +225,8 @@ points:
             tags: [key_1_25u]
           rows:
             r2:
-              led_prev: LED_10
-              led_next: LED_12
+              led_prev: LED_30
+              led_next: LED_31
             r1.skip: true
 
         c2:
@@ -238,25 +236,25 @@ points:
             spread: 1.2kx
           rows:
             r2:
-              led_prev: LED_4
-              led_next: LED_6
+              led_prev: LED_31
+              led_next: LED_32
             r1:
               width: 1.5 * kx
               tags: [key_1_5u]
-              led_prev: LED_5
-              led_next: LED_7
+              led_prev: LED_32
+              led_next: LED_33
               adjust:
                 shift: [0, 0.25kx]
         c3:
           rows:
             r2:
-              led_prev: LED_2
-              led_next: LED_4
+              led_prev: LED_33
+              led_next: LED_34
             r1:
               width: 1.5 * kx
               tags: [key_1_5u]
-              led_prev: LED_3
-              led_next: LED_5
+              led_prev: LED_34
+              led_next: LED_END
               adjust:
                 shift: [0, 0.25kx]
       rows:
