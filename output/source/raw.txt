@@ -45,9 +45,8 @@ presets:
     kcoh: 14
     keycw: 18
     keych: 18
-    diode_shift_x: -5.8
-    diode_shift_y: -6.75
-    diode_rotation: [90 + 45]
+    diode_shift_x: 7
+    diode_rotation: 0
     switch_rotation: 180
     led_shift_y: 5
     choc_v1_support: false
@@ -84,10 +83,8 @@ points:
         shift: [150, -150] # Fix KiCad placement
       columns:
         c1:
-          key:
-            width: 1.25 * kx
-            tags: [key_1_25u]
-            column_net: c1
+          key.width: 1.25 * kx
+          key.tags: [key_1_25u]
           rows:
             r1:
               led_prev: LED_6
@@ -109,9 +106,7 @@ points:
               adjust:
                 shift: [0.125 * kx, 0]
         c2:
-          key:
-            spread: 1.125 * kx
-            column_net: c2
+          key.spread: 1.125 * kx
           rows:
             r1:
               led_prev: LED_5
@@ -129,9 +124,7 @@ points:
               led_prev: LED_27
               led_next: LED_28
         c3:
-          key:
-            stagger: ky/4
-            column_net: c3
+          key.stagger: ky/4
           rows:
             r1:
               led_prev: LED_4
@@ -149,9 +142,7 @@ points:
               led_prev: LED_28
               led_next: LED_29
         c4:
-          key:
-            stagger: ky/8
-            column_net: c4
+          key.stagger: ky/8
           rows:
             r1:
               led_prev: LED_3
@@ -169,9 +160,7 @@ points:
               led_prev: LED_29
               led_next: LED_30
         c5:
-          key:
-            stagger: -ky/8
-            column_net: c5
+          key.stagger: -ky/8
           rows:
             r1:
               led_prev: LED_2
@@ -187,9 +176,7 @@ points:
               led_next: LED_25
             r5.skip: true
         c6:
-          key:
-            stagger: -ky/8
-            column_net: c6
+          key.stagger: -ky/8
           rows:
             r1:
               led_prev: LED_1
@@ -206,9 +193,7 @@ points:
             r5.skip: true
 
         c7:
-          key:
-            stagger: -ky/2
-            column_net: c7
+          key.stagger: -ky/2
           rows:
             r1:
               led_prev: DOUT
@@ -225,15 +210,10 @@ points:
             r3.skip: true
       rows:
         r5:
-          row_net: r5
         r4:
-          row_net: r4
         r3:
-          row_net: r3
         r2:
-          row_net: r2
         r1:
-          row_net: r1
 
     thumbfan:
       anchor:
@@ -249,8 +229,8 @@ points:
             r2:
               led_prev: LED_30
               led_next: LED_31
-              column_net: c5
-              row_net: r5
+              matrix_col: c5
+              matrix_row: r5
             r1.skip: true
 
         c2:
@@ -262,15 +242,15 @@ points:
             r2:
               led_prev: LED_31
               led_next: LED_32
-              column_net: c6
-              row_net: r5
+              matrix_col: c6
+              matrix_row: r5
             r1:
               width: 1.5 * kx
               tags: [key_1_5u]
               led_prev: LED_32
               led_next: LED_33
-              column_net: c7
-              row_net: r3
+              matrix_col: c7
+              matrix_row: r3
               adjust:
                 shift: [0, 0.25kx]
         c3:
@@ -278,15 +258,15 @@ points:
             r2:
               led_prev: LED_33
               led_next: LED_34
-              column_net: c7
-              row_net: r5
+              matrix_col: c7
+              matrix_row: r5
             r1:
               width: 1.5 * kx
               tags: [key_1_5u]
               led_prev: LED_34
               led_next: LED_END
-              column_net: c7
-              row_net: r4
+              matrix_col: c7
+              matrix_row: r4
               adjust:
                 shift: [0, 0.25kx]
       rows:
@@ -622,32 +602,50 @@ pcbs:
           drill: 2.2
 
       # Switch footprint: use ceoloide/switch_choc_v1_v2 for choc presets, ceoloide/switch_mx for mx preset
-      switches:
+      matrix_switches:
         what: ceoloide/switch_mx
-        where: [[/matrix|thumbfan/, -helper]]
-        params:
-          from: "{{column_net}}"
-          to: "{{colrow}}"
-          include_plated_holes: true
+        where: [[/matrix/, -helper]]
+        params: &switches
+          from: "{{colrow}}"
+          to: "{{col.name}}"
+          include_plated_holes: false
           hotswap: true
           reversible: true
-          solder: false
-          include_stabilizer_nets: true
-          include_centerhole_net: true
-
         adjust:
           rotate: switch_rotation
 
-      diodes:
+      thumbfan_switches:
+        what: ceoloide/switch_mx
+        where: [[/thumbfan/, -helper]]
+        params:
+          from: "{{matrix_col}}_{{matrix_row}}"
+          to: "{{matrix_col}}"
+          include_plated_holes: false
+          hotswap: true
+          reversible: true
+        adjust:
+          rotate: switch_rotation
+
+      matrix_diodes:
         what: ceoloide/diode_tht_sod123
-        where: /key/
+        where: [[/matrix/, key]]
         params:
           from: "{{colrow}}"
-          to: "{{row_net}}"
+          to: "{{row.name}}"
           reversible: true
-          include_traces_vias: true
         adjust:
-          shift: [diode_shift_x, diode_shift_y]
+          shift: [diode_shift_x, 0]
+          rotate: diode_rotation
+
+      thumbfan_diodes:
+        what: ceoloide/diode_tht_sod123
+        where: [[/thumbfan/, key]]
+        params:
+          from: "{{matrix_col}}_{{matrix_row}}"
+          to: "{{matrix_row}}"
+          reversible: true
+        adjust:
+          shift: [diode_shift_x, 0]
           rotate: diode_rotation
 
       mcu:
@@ -655,31 +653,25 @@ pcbs:
         where: mcu
         params:
           reversible: true
-          reverse_mount: true
-          only_required_jumpers: false
-          use_rectangular_jumpers: true
-
-          P1: "DOUT"
-          P0: "c7"
-          P2: "r1"
-          P3: "c2"
-          P4: "c3"
-          P5: "c4"
-          P6: "c5"
-          P7: "c6"
-          P8: ""
-          P9: "DA"
-
-          P21: "c6"
-          P20: ""
-          P19: "r1"
-          P18: "c6"
-          P14: "r2"
-          P16: "c5"
-          P10: "r3"
-
-
-
+          only_required_jumpers: true
+          P10: "r1"
+          P3: "r2"
+          P4: "r3"
+          P5: "r4"
+          P0: "r5"
+          P2: "c1"
+          P15: "c2"
+          P18: "c3"
+          P16: "c4"
+          P8: "c5"
+          P9: "c6"
+          P19: "c7"
+          P6: "DA"
+          P7: "CL"
+          P14: "CS"
+          P20: "DOUT"
+          P21_label: " "
+          use_rectangular_jumpers: false
 
       display:
         what: ceoloide/display_nice_view
@@ -707,8 +699,9 @@ pcbs:
           to: RAW
           reversible: true
         adjust:
-          shift: [mcu_x/2-1.6, -mcu_y-0.5ky+1 ]
+          shift: [mcu_x, 0]
           
+
       reset_switch:
         what: ceoloide/reset_switch_tht_top
         where: display
@@ -723,7 +716,6 @@ pcbs:
         where: [key, key_1_25u, key_1_5u]
         params:
           reversible: true
-          
           P1: VCC
           P2: "{{led_next}}"
           P3: GND

@@ -1,0 +1,1897 @@
+models:
+    export:
+        models:
+            matrix_c1_r5:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 142.875
+                            - -141
+                        end:
+                            - 161.875
+                            - -141
+                    right:
+                        type: line
+                        origin:
+                            - 161.875
+                            - -141
+                        end:
+                            - 161.875
+                            - -159
+                    bottom:
+                        type: line
+                        origin:
+                            - 161.875
+                            - -159
+                        end:
+                            - 142.875
+                            - -159
+                    left:
+                        type: line
+                        origin:
+                            - 142.875
+                            - -159
+                        end:
+                            - 142.875
+                            - -141
+                origin:
+                    - 0
+                    - 0
+            matrix_c1_r4:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 138.125
+                            - -122
+                        end:
+                            - 161.875
+                            - -122
+                    right:
+                        type: line
+                        origin:
+                            - 161.875
+                            - -122
+                        end:
+                            - 161.875
+                            - -140
+                    bottom:
+                        type: line
+                        origin:
+                            - 161.875
+                            - -140
+                        end:
+                            - 138.125
+                            - -140
+                    left:
+                        type: line
+                        origin:
+                            - 138.125
+                            - -140
+                        end:
+                            - 138.125
+                            - -122
+                origin:
+                    - 0
+                    - 0
+            matrix_c1_r3:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 138.125
+                            - -103
+                        end:
+                            - 161.875
+                            - -103
+                    right:
+                        type: line
+                        origin:
+                            - 161.875
+                            - -103
+                        end:
+                            - 161.875
+                            - -121
+                    bottom:
+                        type: line
+                        origin:
+                            - 161.875
+                            - -121
+                        end:
+                            - 138.125
+                            - -121
+                    left:
+                        type: line
+                        origin:
+                            - 138.125
+                            - -121
+                        end:
+                            - 138.125
+                            - -103
+                origin:
+                    - 0
+                    - 0
+            matrix_c1_r2:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 138.125
+                            - -84
+                        end:
+                            - 161.875
+                            - -84
+                    right:
+                        type: line
+                        origin:
+                            - 161.875
+                            - -84
+                        end:
+                            - 161.875
+                            - -102
+                    bottom:
+                        type: line
+                        origin:
+                            - 161.875
+                            - -102
+                        end:
+                            - 138.125
+                            - -102
+                    left:
+                        type: line
+                        origin:
+                            - 138.125
+                            - -102
+                        end:
+                            - 138.125
+                            - -84
+                origin:
+                    - 0
+                    - 0
+            matrix_c1_r1:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 138.125
+                            - -65
+                        end:
+                            - 161.875
+                            - -65
+                    right:
+                        type: line
+                        origin:
+                            - 161.875
+                            - -65
+                        end:
+                            - 161.875
+                            - -83
+                    bottom:
+                        type: line
+                        origin:
+                            - 161.875
+                            - -83
+                        end:
+                            - 138.125
+                            - -83
+                    left:
+                        type: line
+                        origin:
+                            - 138.125
+                            - -83
+                        end:
+                            - 138.125
+                            - -65
+                origin:
+                    - 0
+                    - 0
+            matrix_c2_r5:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 162.375
+                            - -141
+                        end:
+                            - 180.375
+                            - -141
+                    right:
+                        type: line
+                        origin:
+                            - 180.375
+                            - -141
+                        end:
+                            - 180.375
+                            - -159
+                    bottom:
+                        type: line
+                        origin:
+                            - 180.375
+                            - -159
+                        end:
+                            - 162.375
+                            - -159
+                    left:
+                        type: line
+                        origin:
+                            - 162.375
+                            - -159
+                        end:
+                            - 162.375
+                            - -141
+                origin:
+                    - 0
+                    - 0
+            matrix_c2_r4:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 162.375
+                            - -122
+                        end:
+                            - 180.375
+                            - -122
+                    right:
+                        type: line
+                        origin:
+                            - 180.375
+                            - -122
+                        end:
+                            - 180.375
+                            - -140
+                    bottom:
+                        type: line
+                        origin:
+                            - 180.375
+                            - -140
+                        end:
+                            - 162.375
+                            - -140
+                    left:
+                        type: line
+                        origin:
+                            - 162.375
+                            - -140
+                        end:
+                            - 162.375
+                            - -122
+                origin:
+                    - 0
+                    - 0
+            matrix_c2_r3:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 162.375
+                            - -103
+                        end:
+                            - 180.375
+                            - -103
+                    right:
+                        type: line
+                        origin:
+                            - 180.375
+                            - -103
+                        end:
+                            - 180.375
+                            - -121
+                    bottom:
+                        type: line
+                        origin:
+                            - 180.375
+                            - -121
+                        end:
+                            - 162.375
+                            - -121
+                    left:
+                        type: line
+                        origin:
+                            - 162.375
+                            - -121
+                        end:
+                            - 162.375
+                            - -103
+                origin:
+                    - 0
+                    - 0
+            matrix_c2_r2:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 162.375
+                            - -84
+                        end:
+                            - 180.375
+                            - -84
+                    right:
+                        type: line
+                        origin:
+                            - 180.375
+                            - -84
+                        end:
+                            - 180.375
+                            - -102
+                    bottom:
+                        type: line
+                        origin:
+                            - 180.375
+                            - -102
+                        end:
+                            - 162.375
+                            - -102
+                    left:
+                        type: line
+                        origin:
+                            - 162.375
+                            - -102
+                        end:
+                            - 162.375
+                            - -84
+                origin:
+                    - 0
+                    - 0
+            matrix_c2_r1:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 162.375
+                            - -65
+                        end:
+                            - 180.375
+                            - -65
+                    right:
+                        type: line
+                        origin:
+                            - 180.375
+                            - -65
+                        end:
+                            - 180.375
+                            - -83
+                    bottom:
+                        type: line
+                        origin:
+                            - 180.375
+                            - -83
+                        end:
+                            - 162.375
+                            - -83
+                    left:
+                        type: line
+                        origin:
+                            - 162.375
+                            - -83
+                        end:
+                            - 162.375
+                            - -65
+                origin:
+                    - 0
+                    - 0
+            matrix_c3_r5:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 181.375
+                            - -136.25
+                        end:
+                            - 199.375
+                            - -136.25
+                    right:
+                        type: line
+                        origin:
+                            - 199.375
+                            - -136.25
+                        end:
+                            - 199.375
+                            - -154.25
+                    bottom:
+                        type: line
+                        origin:
+                            - 199.375
+                            - -154.25
+                        end:
+                            - 181.375
+                            - -154.25
+                    left:
+                        type: line
+                        origin:
+                            - 181.375
+                            - -154.25
+                        end:
+                            - 181.375
+                            - -136.25
+                origin:
+                    - 0
+                    - 0
+            matrix_c3_r4:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 181.375
+                            - -117.25
+                        end:
+                            - 199.375
+                            - -117.25
+                    right:
+                        type: line
+                        origin:
+                            - 199.375
+                            - -117.25
+                        end:
+                            - 199.375
+                            - -135.25
+                    bottom:
+                        type: line
+                        origin:
+                            - 199.375
+                            - -135.25
+                        end:
+                            - 181.375
+                            - -135.25
+                    left:
+                        type: line
+                        origin:
+                            - 181.375
+                            - -135.25
+                        end:
+                            - 181.375
+                            - -117.25
+                origin:
+                    - 0
+                    - 0
+            matrix_c3_r3:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 181.375
+                            - -98.25
+                        end:
+                            - 199.375
+                            - -98.25
+                    right:
+                        type: line
+                        origin:
+                            - 199.375
+                            - -98.25
+                        end:
+                            - 199.375
+                            - -116.25
+                    bottom:
+                        type: line
+                        origin:
+                            - 199.375
+                            - -116.25
+                        end:
+                            - 181.375
+                            - -116.25
+                    left:
+                        type: line
+                        origin:
+                            - 181.375
+                            - -116.25
+                        end:
+                            - 181.375
+                            - -98.25
+                origin:
+                    - 0
+                    - 0
+            matrix_c3_r2:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 181.375
+                            - -79.25
+                        end:
+                            - 199.375
+                            - -79.25
+                    right:
+                        type: line
+                        origin:
+                            - 199.375
+                            - -79.25
+                        end:
+                            - 199.375
+                            - -97.25
+                    bottom:
+                        type: line
+                        origin:
+                            - 199.375
+                            - -97.25
+                        end:
+                            - 181.375
+                            - -97.25
+                    left:
+                        type: line
+                        origin:
+                            - 181.375
+                            - -97.25
+                        end:
+                            - 181.375
+                            - -79.25
+                origin:
+                    - 0
+                    - 0
+            matrix_c3_r1:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 181.375
+                            - -60.25
+                        end:
+                            - 199.375
+                            - -60.25
+                    right:
+                        type: line
+                        origin:
+                            - 199.375
+                            - -60.25
+                        end:
+                            - 199.375
+                            - -78.25
+                    bottom:
+                        type: line
+                        origin:
+                            - 199.375
+                            - -78.25
+                        end:
+                            - 181.375
+                            - -78.25
+                    left:
+                        type: line
+                        origin:
+                            - 181.375
+                            - -78.25
+                        end:
+                            - 181.375
+                            - -60.25
+                origin:
+                    - 0
+                    - 0
+            matrix_c4_r5:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 200.375
+                            - -133.875
+                        end:
+                            - 218.375
+                            - -133.875
+                    right:
+                        type: line
+                        origin:
+                            - 218.375
+                            - -133.875
+                        end:
+                            - 218.375
+                            - -151.875
+                    bottom:
+                        type: line
+                        origin:
+                            - 218.375
+                            - -151.875
+                        end:
+                            - 200.375
+                            - -151.875
+                    left:
+                        type: line
+                        origin:
+                            - 200.375
+                            - -151.875
+                        end:
+                            - 200.375
+                            - -133.875
+                origin:
+                    - 0
+                    - 0
+            matrix_c4_r4:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 200.375
+                            - -114.875
+                        end:
+                            - 218.375
+                            - -114.875
+                    right:
+                        type: line
+                        origin:
+                            - 218.375
+                            - -114.875
+                        end:
+                            - 218.375
+                            - -132.875
+                    bottom:
+                        type: line
+                        origin:
+                            - 218.375
+                            - -132.875
+                        end:
+                            - 200.375
+                            - -132.875
+                    left:
+                        type: line
+                        origin:
+                            - 200.375
+                            - -132.875
+                        end:
+                            - 200.375
+                            - -114.875
+                origin:
+                    - 0
+                    - 0
+            matrix_c4_r3:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 200.375
+                            - -95.875
+                        end:
+                            - 218.375
+                            - -95.875
+                    right:
+                        type: line
+                        origin:
+                            - 218.375
+                            - -95.875
+                        end:
+                            - 218.375
+                            - -113.875
+                    bottom:
+                        type: line
+                        origin:
+                            - 218.375
+                            - -113.875
+                        end:
+                            - 200.375
+                            - -113.875
+                    left:
+                        type: line
+                        origin:
+                            - 200.375
+                            - -113.875
+                        end:
+                            - 200.375
+                            - -95.875
+                origin:
+                    - 0
+                    - 0
+            matrix_c4_r2:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 200.375
+                            - -76.875
+                        end:
+                            - 218.375
+                            - -76.875
+                    right:
+                        type: line
+                        origin:
+                            - 218.375
+                            - -76.875
+                        end:
+                            - 218.375
+                            - -94.875
+                    bottom:
+                        type: line
+                        origin:
+                            - 218.375
+                            - -94.875
+                        end:
+                            - 200.375
+                            - -94.875
+                    left:
+                        type: line
+                        origin:
+                            - 200.375
+                            - -94.875
+                        end:
+                            - 200.375
+                            - -76.875
+                origin:
+                    - 0
+                    - 0
+            matrix_c4_r1:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 200.375
+                            - -57.875
+                        end:
+                            - 218.375
+                            - -57.875
+                    right:
+                        type: line
+                        origin:
+                            - 218.375
+                            - -57.875
+                        end:
+                            - 218.375
+                            - -75.875
+                    bottom:
+                        type: line
+                        origin:
+                            - 218.375
+                            - -75.875
+                        end:
+                            - 200.375
+                            - -75.875
+                    left:
+                        type: line
+                        origin:
+                            - 200.375
+                            - -75.875
+                        end:
+                            - 200.375
+                            - -57.875
+                origin:
+                    - 0
+                    - 0
+            matrix_c5_r4:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 219.375
+                            - -117.25
+                        end:
+                            - 237.375
+                            - -117.25
+                    right:
+                        type: line
+                        origin:
+                            - 237.375
+                            - -117.25
+                        end:
+                            - 237.375
+                            - -135.25
+                    bottom:
+                        type: line
+                        origin:
+                            - 237.375
+                            - -135.25
+                        end:
+                            - 219.375
+                            - -135.25
+                    left:
+                        type: line
+                        origin:
+                            - 219.375
+                            - -135.25
+                        end:
+                            - 219.375
+                            - -117.25
+                origin:
+                    - 0
+                    - 0
+            matrix_c5_r3:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 219.375
+                            - -98.25
+                        end:
+                            - 237.375
+                            - -98.25
+                    right:
+                        type: line
+                        origin:
+                            - 237.375
+                            - -98.25
+                        end:
+                            - 237.375
+                            - -116.25
+                    bottom:
+                        type: line
+                        origin:
+                            - 237.375
+                            - -116.25
+                        end:
+                            - 219.375
+                            - -116.25
+                    left:
+                        type: line
+                        origin:
+                            - 219.375
+                            - -116.25
+                        end:
+                            - 219.375
+                            - -98.25
+                origin:
+                    - 0
+                    - 0
+            matrix_c5_r2:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 219.375
+                            - -79.25
+                        end:
+                            - 237.375
+                            - -79.25
+                    right:
+                        type: line
+                        origin:
+                            - 237.375
+                            - -79.25
+                        end:
+                            - 237.375
+                            - -97.25
+                    bottom:
+                        type: line
+                        origin:
+                            - 237.375
+                            - -97.25
+                        end:
+                            - 219.375
+                            - -97.25
+                    left:
+                        type: line
+                        origin:
+                            - 219.375
+                            - -97.25
+                        end:
+                            - 219.375
+                            - -79.25
+                origin:
+                    - 0
+                    - 0
+            matrix_c5_r1:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 219.375
+                            - -60.25
+                        end:
+                            - 237.375
+                            - -60.25
+                    right:
+                        type: line
+                        origin:
+                            - 237.375
+                            - -60.25
+                        end:
+                            - 237.375
+                            - -78.25
+                    bottom:
+                        type: line
+                        origin:
+                            - 237.375
+                            - -78.25
+                        end:
+                            - 219.375
+                            - -78.25
+                    left:
+                        type: line
+                        origin:
+                            - 219.375
+                            - -78.25
+                        end:
+                            - 219.375
+                            - -60.25
+                origin:
+                    - 0
+                    - 0
+            matrix_c6_r4:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 238.375
+                            - -119.625
+                        end:
+                            - 256.375
+                            - -119.625
+                    right:
+                        type: line
+                        origin:
+                            - 256.375
+                            - -119.625
+                        end:
+                            - 256.375
+                            - -137.625
+                    bottom:
+                        type: line
+                        origin:
+                            - 256.375
+                            - -137.625
+                        end:
+                            - 238.375
+                            - -137.625
+                    left:
+                        type: line
+                        origin:
+                            - 238.375
+                            - -137.625
+                        end:
+                            - 238.375
+                            - -119.625
+                origin:
+                    - 0
+                    - 0
+            matrix_c6_r3:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 238.375
+                            - -100.625
+                        end:
+                            - 256.375
+                            - -100.625
+                    right:
+                        type: line
+                        origin:
+                            - 256.375
+                            - -100.625
+                        end:
+                            - 256.375
+                            - -118.625
+                    bottom:
+                        type: line
+                        origin:
+                            - 256.375
+                            - -118.625
+                        end:
+                            - 238.375
+                            - -118.625
+                    left:
+                        type: line
+                        origin:
+                            - 238.375
+                            - -118.625
+                        end:
+                            - 238.375
+                            - -100.625
+                origin:
+                    - 0
+                    - 0
+            matrix_c6_r2:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 238.375
+                            - -81.625
+                        end:
+                            - 256.375
+                            - -81.625
+                    right:
+                        type: line
+                        origin:
+                            - 256.375
+                            - -81.625
+                        end:
+                            - 256.375
+                            - -99.625
+                    bottom:
+                        type: line
+                        origin:
+                            - 256.375
+                            - -99.625
+                        end:
+                            - 238.375
+                            - -99.625
+                    left:
+                        type: line
+                        origin:
+                            - 238.375
+                            - -99.625
+                        end:
+                            - 238.375
+                            - -81.625
+                origin:
+                    - 0
+                    - 0
+            matrix_c6_r1:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 238.375
+                            - -62.625
+                        end:
+                            - 256.375
+                            - -62.625
+                    right:
+                        type: line
+                        origin:
+                            - 256.375
+                            - -62.625
+                        end:
+                            - 256.375
+                            - -80.625
+                    bottom:
+                        type: line
+                        origin:
+                            - 256.375
+                            - -80.625
+                        end:
+                            - 238.375
+                            - -80.625
+                    left:
+                        type: line
+                        origin:
+                            - 238.375
+                            - -80.625
+                        end:
+                            - 238.375
+                            - -62.625
+                origin:
+                    - 0
+                    - 0
+            matrix_c7_r2:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 252.125
+                            - -95.875
+                        end:
+                            - 280.625
+                            - -95.875
+                    right:
+                        type: line
+                        origin:
+                            - 280.625
+                            - -95.875
+                        end:
+                            - 280.625
+                            - -113.875
+                    bottom:
+                        type: line
+                        origin:
+                            - 280.625
+                            - -113.875
+                        end:
+                            - 252.125
+                            - -113.875
+                    left:
+                        type: line
+                        origin:
+                            - 252.125
+                            - -113.875
+                        end:
+                            - 252.125
+                            - -95.875
+                origin:
+                    - 0
+                    - 0
+            matrix_c7_r1:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 257.375
+                            - -72.125
+                        end:
+                            - 275.375
+                            - -72.125
+                    right:
+                        type: line
+                        origin:
+                            - 275.375
+                            - -72.125
+                        end:
+                            - 275.375
+                            - -90.125
+                    bottom:
+                        type: line
+                        origin:
+                            - 275.375
+                            - -90.125
+                        end:
+                            - 257.375
+                            - -90.125
+                    left:
+                        type: line
+                        origin:
+                            - 257.375
+                            - -90.125
+                        end:
+                            - 257.375
+                            - -72.125
+                origin:
+                    - 0
+                    - 0
+            thumbfan_c1_r2:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 228.7340022
+                            - -135.8581914
+                        end:
+                            - 251.6747406
+                            - -142.0051437
+                    right:
+                        type: line
+                        origin:
+                            - 251.6747406
+                            - -142.0051437
+                        end:
+                            - 247.0159978
+                            - -159.3918086
+                    bottom:
+                        type: line
+                        origin:
+                            - 247.0159978
+                            - -159.3918086
+                        end:
+                            - 224.0752594
+                            - -153.2448563
+                    left:
+                        type: line
+                        origin:
+                            - 224.0752594
+                            - -153.2448563
+                        end:
+                            - 228.7340022
+                            - -135.8581914
+                origin:
+                    - 0
+                    - 0
+            thumbfan_c2_r2:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 255.3744898
+                            - -145.8199933
+                        end:
+                            - 270.962947
+                            - -154.8199933
+                    right:
+                        type: line
+                        origin:
+                            - 270.962947
+                            - -154.8199933
+                        end:
+                            - 261.962947
+                            - -170.4084505
+                    bottom:
+                        type: line
+                        origin:
+                            - 261.962947
+                            - -170.4084505
+                        end:
+                            - 246.3744898
+                            - -161.4084505
+                    left:
+                        type: line
+                        origin:
+                            - 246.3744898
+                            - -161.4084505
+                        end:
+                            - 255.3744898
+                            - -145.8199933
+                origin:
+                    - 0
+                    - 0
+            thumbfan_c2_r1:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 262.7028564
+                            - -122.62688989999998
+                        end:
+                            - 287.3845804
+                            - -136.87688989999998
+                    right:
+                        type: line
+                        origin:
+                            - 287.3845804
+                            - -136.87688989999998
+                        end:
+                            - 278.3845804
+                            - -152.46534709999997
+                    bottom:
+                        type: line
+                        origin:
+                            - 278.3845804
+                            - -152.46534709999997
+                        end:
+                            - 253.70285639999997
+                            - -138.21534709999997
+                    left:
+                        type: line
+                        origin:
+                            - 253.70285639999997
+                            - -138.21534709999997
+                        end:
+                            - 262.7028564
+                            - -122.62688989999998
+                origin:
+                    - 0
+                    - 0
+            thumbfan_c3_r2:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 271.82897249999996
+                            - -155.3199933
+                        end:
+                            - 287.41742969999996
+                            - -164.3199933
+                    right:
+                        type: line
+                        origin:
+                            - 287.41742969999996
+                            - -164.3199933
+                        end:
+                            - 278.41742969999996
+                            - -179.9084505
+                    bottom:
+                        type: line
+                        origin:
+                            - 278.41742969999996
+                            - -179.9084505
+                        end:
+                            - 262.82897249999996
+                            - -170.9084505
+                    left:
+                        type: line
+                        origin:
+                            - 262.82897249999996
+                            - -170.9084505
+                        end:
+                            - 271.82897249999996
+                            - -155.3199933
+                origin:
+                    - 0
+                    - 0
+            thumbfan_c3_r1:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 279.15733909999994
+                            - -132.12688989999998
+                        end:
+                            - 303.8390631
+                            - -146.37688989999998
+                    right:
+                        type: line
+                        origin:
+                            - 303.8390631
+                            - -146.37688989999998
+                        end:
+                            - 294.8390631
+                            - -161.96534709999997
+                    bottom:
+                        type: line
+                        origin:
+                            - 294.8390631
+                            - -161.96534709999997
+                        end:
+                            - 270.15733909999994
+                            - -147.71534709999997
+                    left:
+                        type: line
+                        origin:
+                            - 270.15733909999994
+                            - -147.71534709999997
+                        end:
+                            - 279.15733909999994
+                            - -132.12688989999998
+                origin:
+                    - 0
+                    - 0
+            mcu:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 277.475
+                            - -79.125
+                        end:
+                            - 295.475
+                            - -79.125
+                    right:
+                        type: line
+                        origin:
+                            - 295.475
+                            - -79.125
+                        end:
+                            - 295.475
+                            - -97.125
+                    bottom:
+                        type: line
+                        origin:
+                            - 295.475
+                            - -97.125
+                        end:
+                            - 277.475
+                            - -97.125
+                    left:
+                        type: line
+                        origin:
+                            - 277.475
+                            - -97.125
+                        end:
+                            - 277.475
+                            - -79.125
+                origin:
+                    - 0
+                    - 0
+            display:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 277.475
+                            - -82.625
+                        end:
+                            - 295.475
+                            - -82.625
+                    right:
+                        type: line
+                        origin:
+                            - 295.475
+                            - -82.625
+                        end:
+                            - 295.475
+                            - -100.625
+                    bottom:
+                        type: line
+                        origin:
+                            - 295.475
+                            - -100.625
+                        end:
+                            - 277.475
+                            - -100.625
+                    left:
+                        type: line
+                        origin:
+                            - 277.475
+                            - -100.625
+                        end:
+                            - 277.475
+                            - -82.625
+                origin:
+                    - 0
+                    - 0
+            corne_screw_1:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 151.6875
+                            - -74.5
+                        end:
+                            - 169.6875
+                            - -74.5
+                    right:
+                        type: line
+                        origin:
+                            - 169.6875
+                            - -74.5
+                        end:
+                            - 169.6875
+                            - -92.5
+                    bottom:
+                        type: line
+                        origin:
+                            - 169.6875
+                            - -92.5
+                        end:
+                            - 151.6875
+                            - -92.5
+                    left:
+                        type: line
+                        origin:
+                            - 151.6875
+                            - -92.5
+                        end:
+                            - 151.6875
+                            - -74.5
+                origin:
+                    - 0
+                    - 0
+            corne_screw_2:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 228.875
+                            - -70.9375
+                        end:
+                            - 246.875
+                            - -70.9375
+                    right:
+                        type: line
+                        origin:
+                            - 246.875
+                            - -70.9375
+                        end:
+                            - 246.875
+                            - -88.9375
+                    bottom:
+                        type: line
+                        origin:
+                            - 246.875
+                            - -88.9375
+                        end:
+                            - 228.875
+                            - -88.9375
+                    left:
+                        type: line
+                        origin:
+                            - 228.875
+                            - -88.9375
+                        end:
+                            - 228.875
+                            - -70.9375
+                origin:
+                    - 0
+                    - 0
+            corne_screw_3:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 152.28125
+                            - -131.5
+                        end:
+                            - 170.28125
+                            - -131.5
+                    right:
+                        type: line
+                        origin:
+                            - 170.28125
+                            - -131.5
+                        end:
+                            - 170.28125
+                            - -149.5
+                    bottom:
+                        type: line
+                        origin:
+                            - 170.28125
+                            - -149.5
+                        end:
+                            - 152.28125
+                            - -149.5
+                    left:
+                        type: line
+                        origin:
+                            - 152.28125
+                            - -149.5
+                        end:
+                            - 152.28125
+                            - -131.5
+                origin:
+                    - 0
+                    - 0
+            corne_screw_4:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 228.875
+                            - -108.9375
+                        end:
+                            - 246.875
+                            - -108.9375
+                    right:
+                        type: line
+                        origin:
+                            - 246.875
+                            - -108.9375
+                        end:
+                            - 246.875
+                            - -126.9375
+                    bottom:
+                        type: line
+                        origin:
+                            - 246.875
+                            - -126.9375
+                        end:
+                            - 228.875
+                            - -126.9375
+                    left:
+                        type: line
+                        origin:
+                            - 228.875
+                            - -126.9375
+                        end:
+                            - 228.875
+                            - -108.9375
+                origin:
+                    - 0
+                    - 0
+            corne_screw_5:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 268.35173115
+                            - -142.342752
+                        end:
+                            - 283.94018834999997
+                            - -151.342752
+                    right:
+                        type: line
+                        origin:
+                            - 283.94018834999997
+                            - -151.342752
+                        end:
+                            - 274.94018834999997
+                            - -166.93120919999998
+                    bottom:
+                        type: line
+                        origin:
+                            - 274.94018834999997
+                            - -166.93120919999998
+                        end:
+                            - 259.35173115
+                            - -157.93120919999998
+                    left:
+                        type: line
+                        origin:
+                            - 259.35173115
+                            - -157.93120919999998
+                        end:
+                            - 268.35173115
+                            - -142.342752
+                origin:
+                    - 0
+                    - 0
+            gasket_mount_left:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 127.125
+                            - -93.5
+                        end:
+                            - 145.125
+                            - -93.5
+                    right:
+                        type: line
+                        origin:
+                            - 145.125
+                            - -93.5
+                        end:
+                            - 145.125
+                            - -111.5
+                    bottom:
+                        type: line
+                        origin:
+                            - 145.125
+                            - -111.5
+                        end:
+                            - 127.125
+                            - -111.5
+                    left:
+                        type: line
+                        origin:
+                            - 127.125
+                            - -111.5
+                        end:
+                            - 127.125
+                            - -93.5
+                origin:
+                    - 0
+                    - 0
+            gasket_mount_top_left:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 151.6875
+                            - -53.5
+                        end:
+                            - 169.6875
+                            - -53.5
+                    right:
+                        type: line
+                        origin:
+                            - 169.6875
+                            - -53.5
+                        end:
+                            - 169.6875
+                            - -71.5
+                    bottom:
+                        type: line
+                        origin:
+                            - 169.6875
+                            - -71.5
+                        end:
+                            - 151.6875
+                            - -71.5
+                    left:
+                        type: line
+                        origin:
+                            - 151.6875
+                            - -71.5
+                        end:
+                            - 151.6875
+                            - -53.5
+                origin:
+                    - 0
+                    - 0
+            gasket_mount_top_centre:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 200.375
+                            - -46.375
+                        end:
+                            - 218.375
+                            - -46.375
+                    right:
+                        type: line
+                        origin:
+                            - 218.375
+                            - -46.375
+                        end:
+                            - 218.375
+                            - -64.375
+                    bottom:
+                        type: line
+                        origin:
+                            - 218.375
+                            - -64.375
+                        end:
+                            - 200.375
+                            - -64.375
+                    left:
+                        type: line
+                        origin:
+                            - 200.375
+                            - -64.375
+                        end:
+                            - 200.375
+                            - -46.375
+                origin:
+                    - 0
+                    - 0
+            gasket_mount_top_right:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 238.375
+                            - -51.125
+                        end:
+                            - 256.375
+                            - -51.125
+                    right:
+                        type: line
+                        origin:
+                            - 256.375
+                            - -51.125
+                        end:
+                            - 256.375
+                            - -69.125
+                    bottom:
+                        type: line
+                        origin:
+                            - 256.375
+                            - -69.125
+                        end:
+                            - 238.375
+                            - -69.125
+                    left:
+                        type: line
+                        origin:
+                            - 238.375
+                            - -69.125
+                        end:
+                            - 238.375
+                            - -51.125
+                origin:
+                    - 0
+                    - 0
+            gasket_mount_right:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 288.475
+                            - -95.625
+                        end:
+                            - 306.475
+                            - -95.625
+                    right:
+                        type: line
+                        origin:
+                            - 306.475
+                            - -95.625
+                        end:
+                            - 306.475
+                            - -113.625
+                    bottom:
+                        type: line
+                        origin:
+                            - 306.475
+                            - -113.625
+                        end:
+                            - 288.475
+                            - -113.625
+                    left:
+                        type: line
+                        origin:
+                            - 288.475
+                            - -113.625
+                        end:
+                            - 288.475
+                            - -95.625
+                origin:
+                    - 0
+                    - 0
+            gasket_mount_bottom_left:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 152.875
+                            - -152.5
+                        end:
+                            - 170.875
+                            - -152.5
+                    right:
+                        type: line
+                        origin:
+                            - 170.875
+                            - -152.5
+                        end:
+                            - 170.875
+                            - -170.5
+                    bottom:
+                        type: line
+                        origin:
+                            - 170.875
+                            - -170.5
+                        end:
+                            - 152.875
+                            - -170.5
+                    left:
+                        type: line
+                        origin:
+                            - 152.875
+                            - -170.5
+                        end:
+                            - 152.875
+                            - -152.5
+                origin:
+                    - 0
+                    - 0
+            gasket_mount_bottom_centre:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 200.375
+                            - -147.75
+                        end:
+                            - 218.375
+                            - -147.75
+                    right:
+                        type: line
+                        origin:
+                            - 218.375
+                            - -147.75
+                        end:
+                            - 218.375
+                            - -165.75
+                    bottom:
+                        type: line
+                        origin:
+                            - 218.375
+                            - -165.75
+                        end:
+                            - 200.375
+                            - -165.75
+                    left:
+                        type: line
+                        origin:
+                            - 200.375
+                            - -165.75
+                        end:
+                            - 200.375
+                            - -147.75
+                origin:
+                    - 0
+                    - 0
+            gasket_mount_thumbfan_bottom:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 257.85173115
+                            - -160.5292854
+                        end:
+                            - 273.44018834999997
+                            - -169.5292854
+                    right:
+                        type: line
+                        origin:
+                            - 273.44018834999997
+                            - -169.5292854
+                        end:
+                            - 264.44018834999997
+                            - -185.11774259999999
+                    bottom:
+                        type: line
+                        origin:
+                            - 264.44018834999997
+                            - -185.11774259999999
+                        end:
+                            - 248.85173114999998
+                            - -176.11774259999999
+                    left:
+                        type: line
+                        origin:
+                            - 248.85173114999998
+                            - -176.11774259999999
+                        end:
+                            - 257.85173115
+                            - -160.5292854
+                origin:
+                    - 0
+                    - 0
+            gasket_mount_thumbfan_right:
+                paths:
+                    top:
+                        type: line
+                        origin:
+                            - 287.7257646
+                            - -150.7859416
+                        end:
+                            - 303.3142218
+                            - -159.7859416
+                    right:
+                        type: line
+                        origin:
+                            - 303.3142218
+                            - -159.7859416
+                        end:
+                            - 294.3142218
+                            - -175.3743988
+                    bottom:
+                        type: line
+                        origin:
+                            - 294.3142218
+                            - -175.3743988
+                        end:
+                            - 278.7257646
+                            - -166.3743988
+                    left:
+                        type: line
+                        origin:
+                            - 278.7257646
+                            - -166.3743988
+                        end:
+                            - 287.7257646
+                            - -150.7859416
+                origin:
+                    - 0
+                    - 0
+        origin:
+            - 0
+            - 0
+units: mm
+origin:
+    - 0
+    - 0
