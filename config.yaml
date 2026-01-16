@@ -45,9 +45,10 @@ presets:
     kcoh: 14
     keycw: 18
     keych: 18
-    diode_shift_x: -5.8
-    diode_shift_y: -6.75
-    diode_rotation: [90 + 45]
+    #diode_shift_x: -6
+    diode_shift_x: 7
+    diode_shift_y: -8
+    diode_rotation: [180]
     switch_rotation: 180
     led_shift_y: 5
     choc_v1_support: false
@@ -314,6 +315,7 @@ points:
         - ref: matrix_c2_r1
         - ref: matrix_c1_r2
         - ref: matrix_c2_r2
+          shift: [0,-ky/2]
 
     corne_screw_2:
       key.tags: [helper, corne_screw]
@@ -322,6 +324,7 @@ points:
         - ref: matrix_c5_r2
         - ref: matrix_c6_r1
         - ref: matrix_c6_r2
+          shift: [0,-ky/2]
 
     corne_screw_3:
       key.tags: [helper, corne_screw]
@@ -330,6 +333,7 @@ points:
         - ref: matrix_c2_r4
         - ref: matrix_c1_r5
         - ref: matrix_c2_r5
+          shift: [0,-ky/2]
 
     corne_screw_4:
       key.tags: [helper, corne_screw]
@@ -338,6 +342,7 @@ points:
         - ref: matrix_c5_r4
         - ref: matrix_c6_r3
         - ref: matrix_c6_r4
+          shift: [0,-ky/2]
 
     corne_screw_5:
       key.tags: [helper, corne_screw]
@@ -609,10 +614,13 @@ outlines:
 
 pcbs:
   bhk_pcb:
+    
     template: kicad8
+
     outlines:
       board:
         outline: bhk
+
     footprints:
       m2_screws:
         what: ceoloide/mounting_hole_plated
@@ -628,12 +636,14 @@ pcbs:
         params:
           from: "{{column_net}}"
           to: "{{colrow}}"
-          include_plated_holes: true
           hotswap: true
           reversible: true
-          solder: false
+          include_traces_vias: false
+          hotswap_pads_same_side: true
+          include_plated_holes: true
           include_stabilizer_nets: true
-          include_centerhole_net: true
+          LEFTSTAB: "{{column_net}}"
+          RIGHTSTAB: "{{colrow}}"
 
         adjust:
           rotate: switch_rotation
@@ -645,7 +655,7 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
           reversible: true
-          include_traces_vias: true
+          include_traces_vias: false
         adjust:
           shift: [diode_shift_x, diode_shift_y]
           rotate: diode_rotation
@@ -678,9 +688,6 @@ pcbs:
           P16: "c5"
           P10: "r3"
 
-
-
-
       display:
         what: ceoloide/display_nice_view
         where: display
@@ -710,20 +717,20 @@ pcbs:
           shift: [mcu_x/2-1.6, -mcu_y-0.5ky+1 ]
           
       reset_switch:
-        what: ceoloide/reset_switch_tht_top
+        what: ceoloide/reset_switch_smd_side
         where: display
         params:
           reversible: true
+          include_bosses: true
         adjust:
           shift: [6.75, -25]
           rotate: 90
 
       leds:
         what: ceoloide/led_sk6812mini-e
-        where: [key, key_1_25u, key_1_5u]
+        where: /key/
         params:
           reversible: true
-          
           P1: VCC
           P2: "{{led_next}}"
           P3: GND
@@ -731,3 +738,15 @@ pcbs:
           side: B
         adjust:
           shift: [0, led_shift_y]
+
+      switch_diode_routes:
+        what: ceoloide/utility_router
+        where: /key/
+        params:
+          locked: false
+          routes:
+
+        adjust:
+          rotate: 180
+          #shift: [diode_shift_x, diode_shift_y]
+ 
