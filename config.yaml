@@ -577,6 +577,19 @@ outlines:
     - what: outline
       name: _mcu_area
       operation: add
+
+  bhk_plate:
+    - what: outline
+      name: _matrix
+    - what: outline
+      name: _thumbfan
+      operation: add
+    - what: outline
+      name: _bridge
+      operation: add
+    - what: outline
+      name: _mcu_area
+      operation: add
     - what: outline
       name: _gasket_mounts
       operation: add
@@ -698,34 +711,49 @@ pcbs:
           MOSI: "DA"
           SCK: "CL"
 
+      scrollwheel:
+        what: bhkfp/scrollwheel
+        where: display
+        params:
+          reverse: true
+          from: GND
+          to: GND
+          A: P8
+          B: GND
+          C: r5
+          D: ""
+        adjust:
+          shift: [0,-1.75ky]
+          rotate: 90
+
       battery_connector:
         what: ceoloide/battery_connector_jst_ph_2
         where: display
         params:
           reversible: true
         adjust:
-          shift: [-6, -25]
+          shift: [-6, -1.75ky]
           rotate: 90
 
       on_off_switch:
         what: ceoloide/power_switch_smd_side
-        where: mcu
+        where: display
         params:
           from: BAT_P
           to: RAW
           reversible: true
         adjust:
-          shift: [mcu_x/2-1.6, -mcu_y-0.5ky+1 ]
+          shift: [display_x/2+0.5,-1.75ky]
           
       reset_switch:
         what: ceoloide/reset_switch_smd_side
-        where: display
+        where: thumbfan_c3_r1
         params:
           reversible: true
           include_bosses: true
         adjust:
-          shift: [6.75, -25]
-          rotate: 90
+          shift: [kx/4, 0.65ky]
+
 
       leds:
         what: ceoloide/led_sk6812mini-e
