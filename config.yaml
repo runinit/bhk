@@ -642,8 +642,9 @@ pcbs:
           hotswap_pads_same_side: true
           include_plated_holes: true
           include_stabilizer_nets: true
-          LEFTSTAB: "{{column_net}}"
-          RIGHTSTAB: "{{colrow}}"
+          include_centerhole_net: true
+          RIGHTSTAB: "{{column_net}}"
+          LEFTSTAB: "{{colrow}}"
 
         adjust:
           rotate: switch_rotation
@@ -728,7 +729,7 @@ pcbs:
 
       leds:
         what: ceoloide/led_sk6812mini-e
-        where: /key/
+        where: [[/key/, "/r[24]/"]]
         params:
           reversible: true
           P1: VCC
@@ -738,6 +739,20 @@ pcbs:
           side: B
         adjust:
           shift: [0, led_shift_y]
+
+      leds_rotated:
+        what: ceoloide/led_sk6812mini-e
+        where: [[/key/, "/r[135]/"]]
+        params:
+          reversible: true
+          P1: VCC
+          P2: "{{led_next}}"
+          P3: GND
+          P4: "{{led_prev}}"
+          side: B
+        adjust:
+          shift: [0, led_shift_y]
+          rotate: 180
 
       switch_diode_routes:
         what: ceoloide/utility_router

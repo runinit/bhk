@@ -8,16 +8,24 @@ Black Hole Keyboard (bhk) - An Ergogen v4 keyboard design for a split ergonomic 
 
 ## Build Commands
 
+**IMPORTANT:** When using custom footprints (from `footprints/` directory), you MUST pass the directory path instead of the config file directly. Passing `config.yaml` will skip loading custom footprints and cause errors.
+
 ```bash
 # Generate outputs (KiCad PCB, DXF outlines, points)
-npx ergogen config.yaml
+# Use '.' for current directory to load custom footprints
+npx ergogen .
 
 # Generate to specific output directory
-npx ergogen config.yaml -o output/
+npx ergogen . -o output/
 
 # Preview only (faster, no PCB generation)
-npx ergogen config.yaml --debug
+npx ergogen . --debug
+
+# Clean output before building
+npx ergogen . --clean
 ```
+
+**Why directory input?** Ergogen only loads external footprints from the `footprints/` directory when analyzing a directory or ZIP bundle. File input (e.g., `npx ergogen config.yaml`) skips footprint injection entirely.
 
 Output files are generated in `output/` directory:
 - `outlines/*.dxf` - DXF files for each outline
