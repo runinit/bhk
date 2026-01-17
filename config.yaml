@@ -102,13 +102,14 @@ points:
             r4:
               led_prev: LED_20
               led_next: LED_21
-            r5:
-              width: kx
-              tags: [key]
-              led_prev: LED_26
-              led_next: LED_27
-              adjust:
-                shift: [0.125 * kx, 0]
+            r5.skip: true
+            # r5:
+            #   width: kx
+            #   tags: [key]
+            #   led_prev: LED_26
+            #   led_next: LED_27
+            #   adjust:
+            #     shift: [0.125 * kx, 0]
         c2:
           key:
             spread: 1.125 * kx
@@ -127,6 +128,7 @@ points:
               led_prev: LED_21
               led_next: LED_22
             r5:
+              skip: true
               led_prev: LED_27
               led_next: LED_28
         c3:
@@ -189,7 +191,7 @@ points:
             r5.skip: true
         c6:
           key:
-            stagger: -ky/8
+            stagger: -ky/4
             column_net: c6
           rows:
             r1:
@@ -239,7 +241,7 @@ points:
     thumbfan:
       anchor:
         - ref: matrix_c5_r4
-          shift: [.5kx, -1.125ky]
+          shift: [.5kx, -1.250ky]
       columns:
         c1:
           key:
@@ -298,8 +300,8 @@ points:
       key.tags:
         - helper
       anchor:
-        - ref: matrix_c7_r1
-          shift: [kx/2 + mcu_x/2 + 1.6, ky/2 - mcu_y/2]
+        - ref: matrix_c6_r1
+          shift: [1.5kx + mcu_x/2 + 1.6, ky/2 - mcu_y/2]
 
     display:
       key.tags:
@@ -331,8 +333,8 @@ points:
       anchor.aggregate.parts:
         - ref: matrix_c1_r4
         - ref: matrix_c2_r4
-        - ref: matrix_c1_r5
-        - ref: matrix_c2_r5
+        - ref: matrix_c1_r3
+        - ref: matrix_c2_r3
           shift: [0,-ky/2]
 
     corne_screw_4:
@@ -521,12 +523,15 @@ outlines:
     - what: rectangle
       where: [[/thumbfan/, key]]
       size: kx
+      bound: true
     - what: rectangle
       where: [[/thumbfan/, key_1_25u]]
       size: [kx * 1.25, ky]
+      bound: true
     - what: rectangle
       where: [[/thumbfan/, key_1_5u]]
       size: [kx, ky * 1.5]
+      bound: true
 
   _mcu_area:
     - what: rectangle
@@ -537,33 +542,49 @@ outlines:
       size: [mcu_x, display_y]
 
   _bridge:
+    # 0.5kx bridge above col7 
+    - what: rectangle
+      where: [matrix_c7_r1]
+      size: [kx+mcu_x+2.2,ky]
+      adjust.shift: [0.5kx,0.5ky]
     # Bridge from thumbfan to MCU
     - what: rectangle
       where: [mcu]
       size: [3mcu_x, 3ky]
+      operation: add
       adjust:
         shift: [-mcu_x, -display_y/1.5]
+
+  _thumb_bridge:      
+    - what: polygon
+      points:
+        - ref: matrix_c3_r5
+          shift: [kx/2, -ky/2]
+        - ref: matrix_c3_r5
+          shift: [kx/2, ky/2]
+        - ref: mcu
+          shift: [mcu_x/2,mcu_y/2]
         
-    # Bridge from thumfan to matrix
-    - what: rectangle
-      where: [thumbfan_c2_r2]
-      size: [4kx, 2ky]
-      adjust:
-        shift: [-kx, ky/2]
+        # - ref: mcu
+        #   shift: [mcu_x/2,-3.2ky]
+        - ref: thumbfan_c3_r1
+          shift: [kx/2,1.5kx/2]
+        - ref: thumbfan_c2_r2
+          shift: [-kx/2, -ky/2]
+        - ref: thumbfan_c1_r2
+          shift: [-1.25kx/2, -ky/2]
 
-    # Bridge from matrix to MCU
-    - what: rectangle
-      where: [matrix_c7_r1]
-      size: [1.6, 3 * ky]
-      adjust:
-        shift: [kx/2 + 1.6/2, -ky]
 
-    # Bridge from C3 to Thumbfan
-    - what: rectangle
-      where: [matrix_c2_r5]
-      size: [5kx,ky/2]
-      adjust:
-        shift: [2kx,0]
+
+    # # Bridge from matrix to MCU
+    # - what: rectangle
+    #   where: [matrix_c7_r1]
+    #   size: [1.6, 3 * ky]
+    #   operation: stack
+    #   adjust:
+    #     shift: [kx/2 + 1.6/2, -ky]
+
+
 
   bhk:
     - what: outline
@@ -577,7 +598,10 @@ outlines:
     - what: outline
       name: _mcu_area
       operation: add
+    - what: outline
+      name: _thumb_bridge
 
+      
   bhk_plate:
     - what: outline
       name: _matrix
@@ -612,18 +636,19 @@ outlines:
   preview:
     - what: outline
       name: bhk
+      operation: stack
     - what: outline
       name: _keycaps
       operation: stack
     - what: outline
       name: _mcu_cluster
       operation: stack
-    - what: outline
-      name: _corne_screw_heads
-      operation: stack
-    - what: outline
-      name: _gasket_mounts
-      operation: add
+    # - what: outline
+    #   name: _corne_screw_heads
+    #   operation: add
+    # - what: outline
+    #   name: _gasket_mounts
+    #   operation: add
 
 pcbs:
   bhk_pcb:
@@ -743,16 +768,18 @@ pcbs:
           to: RAW
           reversible: true
         adjust:
-          shift: [display_x/2+0.5,-1.75ky]
+          shift: [display_x/2+5,-1.75ky]
+          rotate: 5
           
       reset_switch:
         what: ceoloide/reset_switch_smd_side
-        where: thumbfan_c3_r1
+        where: display
         params:
           reversible: true
           include_bosses: true
         adjust:
-          shift: [kx/4, 0.65ky]
+          shift: [display_x/2+6.5,-2.75ky]
+          rotate: -85
 
 
       leds:
