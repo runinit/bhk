@@ -303,12 +303,21 @@ points:
         - ref: matrix_c6_r1
           shift: [1.5kx + mcu_x/2 + 1.6, ky/2 - mcu_y/2]
 
+
     display:
       key.tags:
         - helper
       anchor:
         - ref: mcu
           shift: [0, -3.5]
+
+    scrollwheel:
+      key.tags:
+        - helper
+      anchor:
+        - ref: display
+          shift: [0,-1.75ky]
+
           
     corne_screw_1:
       key.tags: [helper, corne_screw]
@@ -437,6 +446,26 @@ outlines:
       operation: stack
       adjust:
         shift: [0, mcu_y/2 - 7.35/2 + 0.7]
+  _thqwgd001c:
+    # 1. Main Body
+    - what: rectangle
+      where: [scrollwheel] 
+      size: [19, 19]
+      fillet: 0.5
+    
+    # 2. Connector / Side Pins
+    - what: rectangle
+      where: [scrollwheel]
+      size: [4, 6]     
+      operation: stack
+      adjust:
+        shift: [-6.35, 0] 
+    
+    # 3. Screen / Active Area
+    - what: rectangle
+      where: [scrollwheel]
+      size: [14, 14]
+      operation: stack
 
   _display:
     - what: rectangle
@@ -574,6 +603,35 @@ outlines:
         - ref: thumbfan_c1_r2
           shift: [-1.25kx/2, -ky/2]
 
+  # _cap_0603:
+  #   # Courtyard
+  #   - what: rectangle
+  #     where: []
+  #     size: [3, 1.5]      
+  #     fillet: 0.2         
+
+  #   # Pad 1
+  #   - what: rectangle
+  #     where: [capacitor]
+  #     size: [0.9, 0.95]   
+  #     adjust:
+  #       shift: [-0.775, 0] 
+  #     operation: stack    
+
+  #   # Pad 2
+  #   - what: rectangle
+  #     where: [capacitor]
+  #     size: [0.9, 0.95]
+  #     adjust:
+  #       shift: [0.775, 0]
+  #     operation: stack
+
+  #   # Body
+  #   - what: rectangle
+  #     where: [capacitor]
+  #     size: [1.6, 0.8]    
+  #     operation: stack
+  #     fillet: 0.1
 
 
     # # Bridge from matrix to MCU
@@ -643,6 +701,9 @@ outlines:
     - what: outline
       name: _mcu_cluster
       operation: stack
+    - what: outline
+      name: _thqwgd001c
+      operation: stack
     # - what: outline
     #   name: _corne_screw_heads
     #   operation: add
@@ -652,14 +713,13 @@ outlines:
 
 pcbs:
   bhk_pcb:
-    
     template: kicad8
-
     outlines:
       board:
         outline: bhk
 
     footprints:
+
       m2_screws:
         what: ceoloide/mounting_hole_plated
         where: /corne_screw/
@@ -667,7 +727,6 @@ pcbs:
           outline: 1.2
           drill: 2.2
 
-      # Switch footprint: use ceoloide/switch_choc_v1_v2 for choc presets, ceoloide/switch_mx for mx preset
       switches:
         what: ceoloide/switch_mx
         where: [[/matrix|thumbfan/, -helper]]
@@ -683,7 +742,6 @@ pcbs:
           include_centerhole_net: true
           RIGHTSTAB: "{{column_net}}"
           LEFTSTAB: "{{colrow}}"
-
         adjust:
           rotate: switch_rotation
 
@@ -707,7 +765,6 @@ pcbs:
           reverse_mount: true
           only_required_jumpers: false
           use_rectangular_jumpers: true
-
           P1: "DOUT"
           P0: "c7"
           P2: "r1"
@@ -737,28 +794,24 @@ pcbs:
           SCK: "CL"
 
       scrollwheel:
-        what: bhkfp/scrollwheel
-        where: display
+        what: bhkfp/thqwgd001c
+        where: scrollwheel
         params:
-          reverse: true
-          from: GND
-          to: GND
-          A: P8
-          B: GND
-          C: r5
-          D: ""
+          reversible: true
+          P1: GND
+          P2: GND
+          P3: P8
         adjust:
-          shift: [0,-1.75ky]
-          rotate: 90
+          rotate: 0
 
       battery_connector:
         what: ceoloide/battery_connector_jst_ph_2
-        where: display
+        where: scrollwheel
         params:
           reversible: true
         adjust:
-          shift: [-6, -1.75ky]
-          rotate: 90
+          shift: [kx/8, -ky/2]
+          rotate: 0
 
       on_off_switch:
         what: ceoloide/power_switch_smd_side
@@ -781,7 +834,6 @@ pcbs:
           shift: [display_x/2+6.5,-2.75ky]
           rotate: -85
 
-
       leds:
         what: ceoloide/led_sk6812mini-e
         where: [[/key/, "/r[24]/"]]
@@ -794,6 +846,19 @@ pcbs:
           side: B
         adjust:
           shift: [0, led_shift_y]
+
+      led_caps:
+        what: bhkfp/cap_0603
+        where: [[/key/, "/r[24]/"]]
+        params:
+          reversible: true
+          include_traces_vias: true
+          to: VCC
+          from: GND
+          side: B
+        adjust:
+          shift: [0 ,led_shift_y+ky/8]
+
 
       leds_rotated:
         what: ceoloide/led_sk6812mini-e
@@ -808,6 +873,20 @@ pcbs:
         adjust:
           shift: [0, led_shift_y]
           rotate: 180
+
+      led_caps_rotated:
+        what: bhkfp/cap_0603
+        where: [[/key/, "/r[135]/"]]
+        params:
+          reversible: true
+          include_traces_vias: true
+          to: VCC
+          from: GND
+          side: B
+        adjust:
+          shift: [0 ,led_shift_y+ky/8]
+          rotate: 180
+
 
       switch_diode_routes:
         what: ceoloide/utility_router
