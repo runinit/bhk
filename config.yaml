@@ -456,7 +456,7 @@ outlines:
     # 2. Connector / Side Pins
     - what: rectangle
       where: [scrollwheel]
-      size: [4, 6]     
+      size: [4, 6]      
       operation: stack
       adjust:
         shift: [-6.35, 0] 
@@ -603,47 +603,6 @@ outlines:
         - ref: thumbfan_c1_r2
           shift: [-1.25kx/2, -ky/2]
 
-  # _cap_0603:
-  #   # Courtyard
-  #   - what: rectangle
-  #     where: []
-  #     size: [3, 1.5]      
-  #     fillet: 0.2         
-
-  #   # Pad 1
-  #   - what: rectangle
-  #     where: [capacitor]
-  #     size: [0.9, 0.95]   
-  #     adjust:
-  #       shift: [-0.775, 0] 
-  #     operation: stack    
-
-  #   # Pad 2
-  #   - what: rectangle
-  #     where: [capacitor]
-  #     size: [0.9, 0.95]
-  #     adjust:
-  #       shift: [0.775, 0]
-  #     operation: stack
-
-  #   # Body
-  #   - what: rectangle
-  #     where: [capacitor]
-  #     size: [1.6, 0.8]    
-  #     operation: stack
-  #     fillet: 0.1
-
-
-    # # Bridge from matrix to MCU
-    # - what: rectangle
-    #   where: [matrix_c7_r1]
-    #   size: [1.6, 3 * ky]
-    #   operation: stack
-    #   adjust:
-    #     shift: [kx/2 + 1.6/2, -ky]
-
-
-
   bhk:
     - what: outline
       name: _matrix
@@ -681,7 +640,7 @@ outlines:
       where: [key, key_1_25u, key_1_5u]
       size: [kx, ky]
       bound: true
-      #autobind: 10   # Default value, increase if gaps remain
+      #autobind: 10    # Default value, increase if gaps remain
     - what: rectangle
       where: [mcu]
       size: [mcu_x, mcu_y]
@@ -836,8 +795,9 @@ pcbs:
 
       leds:
         what: ceoloide/led_sk6812mini-e
-        where: [[/key/, "/r[24]/"]]
+        where: [[/key/, "/r[024]/"]]
         params:
+          include_traces_vias: false
           reversible: true
           P1: VCC
           P2: "{{led_next}}"
@@ -847,18 +807,41 @@ pcbs:
         adjust:
           shift: [0, led_shift_y]
 
+      routes_leds:
+        what: ceoloide/utility_router
+        where: [[/key/, "/r[024]/"]]
+        params:
+          locked: false
+          routes:
+            - "F(0,5)(-2.7,2.3)(-2.7,0.7)(-4.06,0.7)V(-4.06,-0.10592)(-3.4,-0.7)(-2.7,-0.7)(-2.7,-1.65)(-1.975,-2.375)V(-0.775,-2.375)B(-1.975,-2.375)"  # net: GND
+            - "F(2.7,-0.7)(3.4,-0.7)(4.06,-0.10592)(4.06,0.7)V(2.7,0.7)"  # net: VCC
+            - "F(2.7,-1.65)(2.7,-0.7)"  # net: VCC
+            - "(1.975,-2.375)VF(2.7,-1.65)"  # net: VCC
+            - "F(0.775,-2.375)(1.975,-2.375)B(0.775,-2.375)"  # net: VCC
+            - "(4.95,-0.7)VB(2.7,-0.7)"  # net: LED_13
+            - "F(4.95,1.06)(4.95,-0.7)"  # net: LED_13
+            - "F(4.529,1.485)(4.95,1.06)"  # net: LED_13
+            - "F(3.481,1.485)(4.529,1.485)"  # net: LED_13
+            - "F(2.7,0.7)(3.481,1.485)"  # net: LED_13
+            - "(-4.95,-0.7)VF(-2.7,-0.7)"  # net: LED_12
+            - "B(-4.95,1.06)(-4.95,-0.7)"  # net: LED_12
+            - "B(-4.529,1.485)(-4.95,1.06)"  # net: LED_12
+            - "B(-3.481,1.485)(-4.529,1.485)"  # net: LED_12
+            - "B(-2.7,0.7)(-3.481,1.485)"  # net: LED_12
+        adjust:
+          shift: [0, led_shift_y]
+
       led_caps:
         what: bhkfp/cap_0603
-        where: [[/key/, "/r[24]/"]]
+        where: [[/key/, "/r[024]/"]]
         params:
           reversible: true
-          include_traces_vias: true
+          include_traces_vias: false
           to: VCC
           from: GND
           side: B
         adjust:
-          shift: [0 ,led_shift_y+ky/8]
-
+          shift: [0, led_shift_y+ky/8]
 
       leds_rotated:
         what: ceoloide/led_sk6812mini-e
@@ -870,6 +853,30 @@ pcbs:
           P3: GND
           P4: "{{led_prev}}"
           side: B
+          include_traces_vias: false
+        adjust:
+          shift: [0, led_shift_y]
+          rotate: 180
+
+      routes_leds_rotated:
+        what: ceoloide/utility_router
+        where: [[/key/, "/r[135]/"]]
+        params:
+          locked: false
+          routes:
+            - "B(-0,-5)(-2.7,-2.3)(-2.7,-0.7)(-3.4,-0.7)(-4.06,-0.10592)(-4.06,0.7)V(-2.7,0.7)(-2.7,1.65)(-1.975,2.375)V(-0.775,2.375)F(-1.975,2.375)"  # net: GND
+            - "F(3.4,-0.7)(4.06,-0.10592)(4.06,0.7)V(2.7,0.7)(2.7,1.65)(1.975,2.375)V(0.775,2.375)B(1.975,2.375)"  # net: VCC
+            - "F(2.7,-0.7)(3.4,-0.7)"  # net: VCC
+            - "(4.95,-0.7)VB(2.7,-0.7)"  # net: LED_1
+            - "F(4.95,1.06)(4.95,-0.7)"  # net: LED_1
+            - "F(4.529,1.485)(4.95,1.06)"  # net: LED_1
+            - "F(3.481,1.485)(4.529,1.485)"  # net: LED_1
+            - "F(2.7,0.7)(3.481,1.485)"  # net: LED_1
+            - "(-4.95,-0.7)VF(-2.7,-0.7)"  # net: DOUT
+            - "B(-4.95,1.06)(-4.95,-0.7)"  # net: DOUT
+            - "B(-4.529,1.485)(-4.95,1.06)"  # net: DOUT
+            - "B(-3.481,1.485)(-4.529,1.485)"  # net: DOUT
+            - "B(-2.7,0.7)(-3.481,1.485)"  # net: DOUT
         adjust:
           shift: [0, led_shift_y]
           rotate: 180
@@ -879,23 +886,11 @@ pcbs:
         where: [[/key/, "/r[135]/"]]
         params:
           reversible: true
-          include_traces_vias: true
+          include_traces_vias: false
           to: VCC
           from: GND
           side: B
         adjust:
-          shift: [0 ,led_shift_y+ky/8]
+          shift: [0, led_shift_y+ky/8]
           rotate: 180
 
-
-      switch_diode_routes:
-        what: ceoloide/utility_router
-        where: /key/
-        params:
-          locked: false
-          routes:
-
-        adjust:
-          rotate: 180
-          #shift: [diode_shift_x, diode_shift_y]
- 
