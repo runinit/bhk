@@ -704,6 +704,21 @@ pcbs:
         adjust:
           rotate: switch_rotation
 
+      routes_switches:
+          what: ceoloide/utility_router
+          where: [[/matrix|thumbfan/, -helper]]
+          params:
+            locked: false
+            routes:
+              - "F(7.085,-2.54)(7.085,-0.924)(6.161,-0)(5.08,-0)B(6.456,-1.376)(6.456,-4.466)(5.842,-5.08)"  # net: c6
+              - "F(-5.08,0)(-6.371,-1.291)(-6.371,-4.551)(-5.842,-5.08)(-5.355,-5.567)(-5.355,-7.995)(-5.35,-8)"  # net: c6_r1
+              - "B(-6.076,0)(-5.08,0)"  # net: c6_r1
+              - "B(-7.085,-1.009)(-6.076,0)"  # net: c6_r1
+              - "B(-7.085,-2.54)(-7.085,-1.009)"  # net: c6_r1
+              - "B(-7.085,-2.54)(-7.085,-4.407)(-5.35,-6.142)(-5.35,-8)"  # net: c6_r1
+          adjust:
+            rotate: switch_rotation
+
       diodes:
         what: ceoloide/diode_tht_sod123
         where: /key/
@@ -763,14 +778,28 @@ pcbs:
         adjust:
           rotate: 0
 
+      routes_scrollwheel:
+        what: ceoloide/utility_router
+        where: scrollwheel
+        params:
+          locked: false
+          routes:
+            - "B(-4.9,-2.4892)(-6.3122,-2.4892)V(-7.7892,-2.4892)(-7.8,-2.5)"  # net: GND
+            - "B(-4.9,0)(-6.3122,0)V(-7.8,0)"  # net: SCL
+            - "B(-4.9508,2.4892)(-6.363,2.4892)V(-7.7892,2.4892)(-7.8,2.5)"  # net: P8
+            - "B(9.75,2.25)(6.6566,2.25)(6.6418,2.2352)V(3.2648,2.2352)(3.25,2.25)"  # net: GND
+            - "B(9.7633,-2.1844)(6.6699,-2.1844)(6.6551,-2.1992)V(3.2781,-2.1992)(3.2633,-2.1844)"  # net: GND
+        adjust:
+          rotate: 0
+
       battery_connector:
         what: ceoloide/battery_connector_jst_ph_2
         where: scrollwheel
         params:
           reversible: true
         adjust:
-          shift: [kx/8, -ky/2]
-          rotate: 0
+          shift: [-kx/1.3, -ky/3]
+          rotate: -90
 
       on_off_switch:
         what: ceoloide/power_switch_smd_side
@@ -780,7 +809,22 @@ pcbs:
           to: RAW
           reversible: true
         adjust:
-          shift: [display_x/2+5,-1.75ky]
+          shift: [display_x/2+6,-2.25ky]
+          rotate: 5
+
+      routes_on_off_switch:
+        what: ceoloide/utility_router
+        where: display
+        params:
+          locked: false
+          routes:
+            - "B(-1.735,0.75)(-1.57926,0.59426)(-0.60209,0.59426)(-0.04329,0.03546)V(-0.82875,-0.75)(-1.735,-0.75)"  # net: RAW
+            - "B(-0.62275,2.25)(-1.735,2.25)"  # net: BAT_P
+            - "B(0.00751,2.88026)(-0.62275,2.25)"  # net: BAT_P
+            - "(0.00751,3.64226)VB(0.00751,2.88026)F(0.00751,3.64226)"  # net: BAT_P
+            - "F(0.00751,2.88026)(-0.62275,2.25)(-1.735,2.25)"  # net: BAT_P
+        adjust:
+          shift: [display_x/2+6,-2.25ky]
           rotate: 5
           
       reset_switch:
@@ -789,6 +833,20 @@ pcbs:
         params:
           reversible: true
           include_bosses: true
+        adjust:
+          shift: [display_x/2+6.5,-2.75ky]
+          rotate: -85
+          
+      routes_reset_switch:
+        what: ceoloide/utility_router
+        where: display
+        params:
+          locked: false
+          routes:
+            - "F(-2.625,-0.85)(-2.117,-0.342)(-1.69,-0.342)(-1.1684,-0.8636)V(-0.6468,-0.342)(2.117,-0.342)(2.625,-0.85)"  # net: GND
+            - "F(-1.1684,-0.8636)(-0.6468,-0.342)(2.117,-0.342)(2.625,-0.85)"  # net: GND
+            - "F(-2.625,0.85)(-2.22756,0.45256)(0.30016,0.45256)(1.016,1.1684)V(1.73184,0.45256)(2.22756,0.45256)(2.625,0.85)"  # net: RST
+            - "F(1.016,1.1684)(1.73184,0.45256)(2.22756,0.45256)(2.625,0.85)"  # net: RST
         adjust:
           shift: [display_x/2+6.5,-2.75ky]
           rotate: -85
@@ -864,19 +922,15 @@ pcbs:
         params:
           locked: false
           routes:
-            - "B(-0,-5)(-2.7,-2.3)(-2.7,-0.7)(-3.4,-0.7)(-4.06,-0.10592)(-4.06,0.7)V(-2.7,0.7)(-2.7,1.65)(-1.975,2.375)V(-0.775,2.375)F(-1.975,2.375)"  # net: GND
+            - "F(-0,-5)(-1.143,-5)(-1.397,-4.746)(-2.286,-4.746)(-5.551,-1.481)(-5.551,-0.10353)(-4.74747,0.7)(-4.06,0.7)V"  # net: GND
+            - "B(-4.1148,0.6452)(-4.1148,0.0148)(-3.4,-0.7)(-2.7,-0.7)"  # net: GND
+            - "B(-4.06,0.7)(-4.1148,0.6452)"  # net: GND
+            - "F(-4.06,0.7)(-2.7,0.7)(-2.7,1.65)(-1.975,2.375)V(-0.775,2.375)F(-1.975,2.375)"  # net: GND
+            - "(-4.572,-0.7)VF(-2.7,-0.7)"  # net: DOUT
+            - "B(-4.572,-0.7)(-4.686,-0.586)(-4.686,0.982)(-4.2672,1.4008)(-3.4008,1.4008)(-2.7,0.7)"  # net: DOUT
             - "F(3.4,-0.7)(4.06,-0.10592)(4.06,0.7)V(2.7,0.7)(2.7,1.65)(1.975,2.375)V(0.775,2.375)B(1.975,2.375)"  # net: VCC
             - "F(2.7,-0.7)(3.4,-0.7)"  # net: VCC
-            - "(4.95,-0.7)VB(2.7,-0.7)"  # net: LED_1
-            - "F(4.95,1.06)(4.95,-0.7)"  # net: LED_1
-            - "F(4.529,1.485)(4.95,1.06)"  # net: LED_1
-            - "F(3.481,1.485)(4.529,1.485)"  # net: LED_1
-            - "F(2.7,0.7)(3.481,1.485)"  # net: LED_1
-            - "(-4.95,-0.7)VF(-2.7,-0.7)"  # net: DOUT
-            - "B(-4.95,1.06)(-4.95,-0.7)"  # net: DOUT
-            - "B(-4.529,1.485)(-4.95,1.06)"  # net: DOUT
-            - "B(-3.481,1.485)(-4.529,1.485)"  # net: DOUT
-            - "B(-2.7,0.7)(-3.481,1.485)"  # net: DOUT
+            - "F(2.7,0.7)(3.481,1.485)(4.529,1.485)(4.95,1.06)(4.95,-0.7)V(2.7,-0.7)"  # net: LED_1
         adjust:
           shift: [0, led_shift_y]
           rotate: 180
@@ -893,4 +947,15 @@ pcbs:
         adjust:
           shift: [0, led_shift_y+ky/8]
           rotate: 180
+
+      routes_switch_col:
+        what: ceoloide/utility_router
+        where: [["/r[2345]/", -helper]]
+        params:
+          locked: false
+          routes:
+            - "F(7.085,16.46)(7.085,-2.54)"  # net: c1
+        adjust:
+          rotate: switch_rotation
+        
 
