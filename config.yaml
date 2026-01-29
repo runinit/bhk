@@ -452,7 +452,7 @@ outlines:
       operation: stack
       adjust:
         shift: [0, mcu_y/2 - 7.35/2 + 0.7]
-        
+
   _thqwgd001c:
     # 1. Main Body
     - what: rectangle
@@ -695,7 +695,7 @@ pcbs:
         what: ceoloide/switch_mx
         where: [[/matrix|thumbfan/, -helper]]
         params:
-          from: "{{column_net}}"
+          from: "{{matrix_col}}"
           to: "{{colrow}}"
           hotswap: true
           reversible: true
@@ -726,7 +726,7 @@ pcbs:
         where: [[/matrix|thumbfan/, -helper]]
         params:
           from: "{{colrow}}"
-          to: "{{row_net}}"
+          to: "{{matrix_row}}"
           reversible: true
           include_traces_vias: false
         adjust:
@@ -979,3 +979,8 @@ pcbs:
             - "F(5.08,-0)(6.18,-1.1)(6.18,-17.9)(5.08,-19)"
         adjust:
           rotate: switch_rotation
+      
+      zone_gnd:
+        what: ceoloide/utility_filled_zone
+        params:
+          locked: false
