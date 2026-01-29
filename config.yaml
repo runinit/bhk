@@ -265,15 +265,15 @@ points:
             r2:
               led_prev: LED_29
               led_next: LED_30
-              column_net: c6
-              row_net: r5
+              column_net: c7
+              row_net: r4
             r1:
               width: 1.5 * kx
               tags: [key_1_5u]
               led_prev: LED_26
               led_next: LED_27
-              column_net: c7
-              row_net: r3
+              column_net: c6
+              row_net: r5
               adjust:
                 shift: [0, 0.25 * kx]
         c3:
@@ -281,15 +281,15 @@ points:
             r2:
               led_prev: LED_28
               led_next: LED_29
-              column_net: c7
-              row_net: r5
+              column_net: c8
+              row_net: r4
             r1:
               width: 1.5 * kx
               tags: [key_1_5u]
               led_prev: LED_27
               led_next: LED_28
-              column_net: c7
-              row_net: r4
+              column_net: c8
+              row_net: r5
               adjust:
                 shift: [0, 0.25 * kx]
       rows:
@@ -311,8 +311,11 @@ points:
           shift: [0, -3.5]
 
     scrollwheel:
-      key.tags:
-        - helper
+      key:
+        tags:
+          - helper
+        column_net: c8
+        row_net: r3
       anchor:
         - ref: display
           shift: [0, -1.75 * ky]
@@ -695,8 +698,8 @@ pcbs:
         what: ceoloide/switch_mx
         where: [[/matrix|thumbfan/, -helper]]
         params:
-          from: "{{matrix_col}}"
-          to: "{{colrow}}"
+          from: "{{column_net}}"
+          to: "{{column_net}}_{{row_net}}"
           hotswap: true
           reversible: true
           include_traces_vias: false
@@ -725,8 +728,8 @@ pcbs:
         what: ceoloide/diode_tht_sod123
         where: [[/matrix|thumbfan/, -helper]]
         params:
-          from: "{{colrow}}"
-          to: "{{matrix_row}}"
+          from: "{{column_net}}_{{row_net}}"
+          to: "{{row_net}}"
           reversible: true
           include_traces_vias: false
         adjust:
@@ -761,7 +764,7 @@ pcbs:
           P5: "c4"
           P6: "c5"
           P7: "c6"
-          P8: ""
+          P8: "c8"
           P9: "DA"
 
           P21: "c6"
@@ -788,7 +791,7 @@ pcbs:
           reversible: true
           P1: GND
           P2: GND
-          P3: P8
+          P3: P20
         adjust:
           rotate: 0
 
@@ -800,11 +803,23 @@ pcbs:
           routes:
             - "B(-4.9,-2.4892)(-6.3122,-2.4892)V(-7.7892,-2.4892)(-7.8,-2.5)" # net: GND
             - "B(-4.9,0)(-6.3122,0)V(-7.8,0)" # net: SCL
-            - "B(-4.9508,2.4892)(-6.363,2.4892)V(-7.7892,2.4892)(-7.8,2.5)" # net: P8
+            - "B(-4.9508,2.4892)(-6.363,2.4892)V(-7.7892,2.4892)(-7.8,2.5)" # net: P20
             - "B(9.75,2.25)(6.6566,2.25)(6.6418,2.2352)V(3.2648,2.2352)(3.25,2.25)" # net: GND
             - "B(9.7633,-2.1844)(6.6699,-2.1844)(6.6551,-2.1992)V(3.2781,-2.1992)(3.2633,-2.1844)" # net: GND
         adjust:
           rotate: 0
+
+      diode_scrollwheel:
+        what: ceoloide/diode_tht_sod123
+        where: scrollwheel
+        params:
+          from: "{{column_net}}_{{row_net}}"
+          to: "{{row_net}}"
+          reversible: true
+          include_traces_vias: false
+        adjust:
+          shift: [diode_shift_x-4, diode_shift_y]
+          rotate: diode_rotation
 
       battery_connector:
         what: ceoloide/battery_connector_jst_ph_2
@@ -813,8 +828,8 @@ pcbs:
           reversible: true
           side: B
         adjust:
-          shift: [-1.3 * kx, -ky/3]
-          rotate: 90
+          shift: [-kx/1.65, -ky/3]
+          rotate: -90
 
       on_off_switch:
         what: ceoloide/power_switch_smd_side
@@ -824,7 +839,7 @@ pcbs:
           to: RAW
           reversible: true
         adjust:
-          shift: [kx/4, ky-1.425]
+          shift: [kx/4, ky-1.5]
           rotate: 90
 
       routes_on_off_switch:
